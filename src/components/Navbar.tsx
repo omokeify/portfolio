@@ -20,6 +20,7 @@ export default function Navbar() {
     { name: "Home", href: "#" },
     { name: "About", href: "#about" },
     { name: "Works", href: "#works" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -35,7 +36,7 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <div className="flex items-center gap-8 mr-4">
-            {links.map((link) => (
+            {links.slice(0, 3).map((link) => (
               <div key={link.name}>
                 <MagneticButton>
                   <a
@@ -93,21 +94,77 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 bg-main flex flex-col items-center justify-center gap-8 z-40"
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 bg-sec text-main z-[100] flex flex-col justify-between p-8 md:p-12 lg:p-16"
           >
-            {links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-4xl font-bold tracking-tighter hover:text-sec/70 transition-colors text-sec"
+            {/* Top Bar */}
+            <div className="flex justify-between items-start w-full">
+              <div className="w-12 h-12 rounded-full border border-main/20"></div>
+              <button onClick={() => setIsOpen(false)} className="p-2 hover:rotate-90 transition-transform duration-300">
+                <X className="w-8 h-8" />
+              </button>
+            </div>
+
+            {/* Main Content */}
+            <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-7xl mx-auto flex-grow my-12 gap-12">
+              {/* Links */}
+              <div className="flex flex-col gap-6 w-full md:w-1/2">
+                {links.map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 + i * 0.1 }}
+                  >
+                    <a
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter hover:text-main/70 transition-colors flex justify-between items-center group"
+                    >
+                      {link.name}
+                      <span className="text-2xl md:text-4xl font-light opacity-50 group-hover:opacity-100 transition-opacity">+</span>
+                    </a>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Right Side Info & Image */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 }}
+                className="w-full md:w-1/2 flex flex-col items-end text-right hidden md:flex"
               >
-                {link.name}
-              </a>
-            ))}
+                <div className="mb-8">
+                  <h3 className="text-xl font-bold mb-2 flex items-center justify-end gap-2">
+                    <span>👋</span> Nice to see you!
+                  </h3>
+                  <p className="text-sm text-main/60 max-w-xs ml-auto">
+                    I'm Fredy Omoke, Software Engineer<br/>based in the World
+                  </p>
+                </div>
+                <div className="w-full max-w-md aspect-[4/3] bg-[#EAEAEA] rounded-3xl overflow-hidden relative shadow-2xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
+                    alt="Abstract blob" 
+                    className="w-full h-full object-cover mix-blend-multiply opacity-80 hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="flex justify-between items-end w-full text-xs text-main/40 uppercase tracking-widest font-medium">
+              <div>
+                Made with <span className="text-red-500">❤️</span> by Mr. Fredy
+              </div>
+              <div>
+                © 2026
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
