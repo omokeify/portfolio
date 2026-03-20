@@ -1,7 +1,7 @@
-import { Layers, PenTool, Code2, Globe } from "lucide-react";
-import { RevealLine, FadeIn } from "./Animations";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { Layers, PenTool, Code2, Globe } from "lucide-react";
+import { RevealLine, FadeIn } from "./Animations";
 
 const services = [
   {
@@ -31,36 +31,17 @@ const services = [
 ];
 
 export default function Services() {
-  const targetRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: targetRef,
+    target: containerRef,
     offset: ["start end", "end start"]
   });
 
   const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 0.8]);
+  const y = useTransform(scrollYProgress, [0, 1], [150, -150]);
 
   return (
-    <section ref={targetRef} className="relative pt-24 bg-main text-sec overflow-hidden min-h-screen flex flex-col justify-between">
-      {/* Background SVG Curve */}
-      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-        <svg 
-          viewBox="0 0 1440 1024" 
-          className="absolute w-full h-full object-cover" 
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <motion.path 
-            style={{ pathLength, opacity }}
-            d="M 1200 -200 C 800 200, 600 600, 1000 800 C 1400 1000, 1200 1300, 1000 1500" 
-            fill="none" 
-            stroke="#d4f534" 
-            strokeWidth="120" 
-            strokeLinecap="round"
-            className="blur-[1px]"
-          />
-        </svg>
-      </div>
-
+    <section ref={containerRef} className="relative pt-24 bg-main text-sec overflow-hidden min-h-screen flex flex-col justify-between">
       <div className="max-w-7xl mx-auto w-full px-6 md:px-12 lg:px-24 relative z-10 flex-grow">
         
         {/* Top Label */}

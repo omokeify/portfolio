@@ -15,6 +15,8 @@ import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
 import Preloader from "./components/Preloader";
 import Marquee from "./components/Marquee";
+import MusicPlayer from "./components/MusicPlayer";
+import BackgroundWave from "./components/BackgroundWave";
 
 export default function App() {
   useEffect(() => {
@@ -42,9 +44,11 @@ export default function App() {
 
   return (
     <div className="bg-main text-sec min-h-screen font-sans selection:bg-sec selection:text-main">
+      <BackgroundWave />
       <Preloader />
       <CustomCursor />
       <Navbar />
+      <MusicPlayer />
       <main>
         <Hero />
         <AboutPreview />

@@ -19,7 +19,7 @@ export default function Hero() {
       <div className="z-10 flex flex-col items-center text-center mt-12">
         <RevealLine delay={0.1}>
           <h2 className="text-lg md:text-xl font-medium text-sec mb-4">
-            Hi! i'm Aziz
+            Hi! I'm Fredy Omoke
           </h2>
         </RevealLine>
         

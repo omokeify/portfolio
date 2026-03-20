@@ -13,10 +13,10 @@ export default function Marquee() {
         }}
       >
         <span className="text-4xl md:text-6xl font-bold uppercase tracking-tighter px-8">
-          Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi •
+          Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke •
         </span>
         <span className="text-4xl md:text-6xl font-bold uppercase tracking-tighter px-8">
-          Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi • Aziz Khaldi •
+          Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke • Fredy Omoke •
         </span>
       </motion.div>
     </div>

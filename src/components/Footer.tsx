@@ -33,7 +33,7 @@ export default function Footer() {
               <li><MagneticButton><a href="#" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Home</a></MagneticButton></li>
               <li><MagneticButton><a href="#works" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Work</a></MagneticButton></li>
               <li><MagneticButton><a href="#about" className="text-main/80 hover:text-thr transition-colors inline-block py-1">About</a></MagneticButton></li>
-              <li><MagneticButton><a href="mailto:contact@azizkhaldi.com" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Contact</a></MagneticButton></li>
+              <li><MagneticButton><a href="mailto:contact@fredyomoke.com" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Contact</a></MagneticButton></li>
             </ul>
           </FadeIn>
           
@@ -42,28 +42,28 @@ export default function Footer() {
             <ul className="space-y-4 font-medium flex flex-col items-start">
               <li>
                 <MagneticButton>
-                  <a href="mailto:contact@azizkhaldi.com" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
+                  <a href="mailto:contact@fredyomoke.com" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
                     Email <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 transition-all" />
                   </a>
                 </MagneticButton>
               </li>
               <li>
                 <MagneticButton>
-                  <a href="https://www.linkedin.com/in/aziz-khaldi-b28207261/" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
+                  <a href="https://www.linkedin.com/in/fredyomoke/" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
                     LinkedIn <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 transition-all" />
                   </a>
                 </MagneticButton>
               </li>
               <li>
                 <MagneticButton>
-                  <a href="https://wa.me/213779577865" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
+                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
                     WhatsApp <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 transition-all" />
                   </a>
                 </MagneticButton>
               </li>
               <li>
                 <MagneticButton>
-                  <a href="https://github.com/AzizKhaldi01" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
+                  <a href="https://github.com/fredyomoke" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
                     GitHub <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 transition-all" />
                   </a>
                 </MagneticButton>
@@ -73,17 +73,17 @@ export default function Footer() {
 
           <FadeIn delay={0.4} className="col-span-2 md:col-span-2">
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-main mb-6">
-              AZIZ
+              FREDY
             </h2>
             <div className="flex flex-col sm:flex-row gap-8">
               <div>
                 <h4 className="text-xs uppercase tracking-widest text-main/50 font-bold mb-2">Version</h4>
-                <p className="text-main/80 font-medium">2025 © Edition</p>
+                <p className="text-main/80 font-medium">2026 © Edition</p>
               </div>
               <div>
                 <h4 className="text-xs uppercase tracking-widest text-main/50 font-bold mb-2">Contact</h4>
-                <p className="text-main/80 font-medium">+213779577865</p>
-                <p className="text-main/80 font-medium">contact@azizkhaldi.com</p>
+                <p className="text-main/80 font-medium">+1234567890</p>
+                <p className="text-main/80 font-medium">contact@fredyomoke.com</p>
               </div>
             </div>
           </FadeIn>

@@ -40,7 +40,7 @@ export default function AboutPreview() {
         <div className="text-center max-w-4xl mx-auto mb-12">
           <RevealLine>
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-tight">
-              I'm Aziz — a Full Stack Developer crafting fast, scalable, and immersive digital experiences that merge creativity with engineering precision.
+              I'm Fredy Omoke — a Full Stack Developer crafting fast, scalable, and immersive digital experiences that merge creativity with engineering precision.
             </h2>
           </RevealLine>
           <FadeIn delay={0.2}>
