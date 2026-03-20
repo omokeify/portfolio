@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
 import { motion } from 'motion/react';
 import MagneticButton from './MagneticButton';
 
@@ -37,23 +36,28 @@ export default function MusicPlayer() {
           className="w-14 h-14 rounded-full bg-sec text-main flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
           aria-label="Toggle Music"
         >
-          {isPlaying ? (
+          <div className="flex items-center justify-center gap-[3px] h-5 w-5">
             <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              className="flex items-center justify-center"
-            >
-              <Volume2 className="w-6 h-6" />
-            </motion.div>
-          ) : (
+              animate={isPlaying ? { height: ["20%", "80%", "20%"] } : { height: "20%" }}
+              transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
+              className="w-[3px] bg-current rounded-full"
+            />
             <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              className="flex items-center justify-center"
-            >
-              <VolumeX className="w-6 h-6" />
-            </motion.div>
-          )}
+              animate={isPlaying ? { height: ["40%", "100%", "40%"] } : { height: "40%" }}
+              transition={{ repeat: Infinity, duration: 0.6, ease: "easeInOut", delay: 0.1 }}
+              className="w-[3px] bg-current rounded-full"
+            />
+            <motion.div
+              animate={isPlaying ? { height: ["30%", "70%", "30%"] } : { height: "30%" }}
+              transition={{ repeat: Infinity, duration: 0.9, ease: "easeInOut", delay: 0.2 }}
+              className="w-[3px] bg-current rounded-full"
+            />
+            <motion.div
+              animate={isPlaying ? { height: ["50%", "90%", "50%"] } : { height: "50%" }}
+              transition={{ repeat: Infinity, duration: 0.7, ease: "easeInOut", delay: 0.3 }}
+              className="w-[3px] bg-current rounded-full"
+            />
+          </div>
         </button>
       </MagneticButton>
     </div>
