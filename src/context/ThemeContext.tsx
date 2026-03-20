@@ -13,14 +13,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
+    // We default to 'light' and do not persist to localStorage for now to avoid state issues
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
       document.documentElement.style.setProperty('--color-main', '#1e1e1e');
