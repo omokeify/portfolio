@@ -3,12 +3,22 @@ import { motion } from 'motion/react';
 import MagneticButton from './MagneticButton';
 
 export default function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.3;
+      
+      // Attempt to autoplay
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          // Auto-play was prevented by the browser
+          console.log("Autoplay prevented:", error);
+          setIsPlaying(false);
+        });
+      }
     }
   }, []);
 
@@ -28,6 +38,7 @@ export default function MusicPlayer() {
       <audio
         ref={audioRef}
         loop
+        autoPlay
         src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"
       />
       <MagneticButton>
