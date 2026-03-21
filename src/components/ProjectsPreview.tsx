@@ -1,9 +1,10 @@
-import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { ArrowUpRight, Grid } from "lucide-react";
 import { RevealLine, FadeIn } from "./Animations";
 import { motion, useScroll, useTransform } from "motion/react";
 import MagneticButton from "./MagneticButton";
 import { Link } from "react-router-dom";
+import FlowingMenu from "./FlowingMenu";
 
 const projects = [
   {
@@ -72,6 +73,18 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
 }
 
 export default function ProjectsPreview() {
+  const [view, setView] = useState<"grid" | "flowing">("grid");
+
+  useEffect(() => {
+    setView(window.innerWidth >= 768 ? "flowing" : "grid");
+  }, []);
+
+  const flowingItems = projects.map(p => ({
+    link: p.link,
+    text: p.title,
+    image: p.image
+  }));
+
   return (
     <section id="works" className="py-24 px-6 md:px-12 lg:px-24 bg-main text-sec">
       <div className="max-w-7xl mx-auto">
@@ -88,23 +101,49 @@ export default function ProjectsPreview() {
               </p>
             </FadeIn>
           </div>
-          <FadeIn delay={0.3}>
-            <MagneticButton>
-              <Link to="/works" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-sec/60 transition-colors group">
-                All Projects
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </Link>
-            </MagneticButton>
-          </FadeIn>
+          
+          <div className="flex items-center gap-6">
+            <FadeIn delay={0.3} className="flex items-center gap-2 bg-sec/5 p-1 rounded-full border border-sec/10 shrink-0">
+              <button 
+                onClick={() => setView('grid')}
+                className={`p-3 rounded-full transition-all duration-300 ${view === 'grid' ? 'bg-sec text-main shadow-md' : 'text-sec/50 hover:text-sec'}`}
+                aria-label="Grid View"
+              >
+                <Grid className="w-5 h-5" />
+              </button>
+              <button 
+                onClick={() => setView('flowing')}
+                className={`px-4 py-3 rounded-full transition-all duration-300 font-medium text-sm hidden sm:block ${view === 'flowing' ? 'bg-sec text-main shadow-md' : 'text-sec/50 hover:text-sec'}`}
+                aria-label="Interactive View"
+              >
+                Interactive
+              </button>
+            </FadeIn>
+
+            <FadeIn delay={0.4}>
+              <MagneticButton>
+                <Link to="/works" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-sec/60 transition-colors group">
+                  All Projects
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </Link>
+              </MagneticButton>
+            </FadeIn>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {projects.map((project, index) => (
-            <div key={index}>
-              <ProjectCard project={project} index={index} />
-            </div>
-          ))}
-        </div>
+        {view === "flowing" ? (
+          <FadeIn delay={0.5}>
+            <FlowingMenu items={flowingItems} />
+          </FadeIn>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {projects.map((project, index) => (
+              <div key={index}>
+                <ProjectCard project={project} index={index} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
