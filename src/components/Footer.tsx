@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { RevealLine, FadeIn } from "./Animations";
 import MagneticButton from "./MagneticButton";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -30,10 +31,10 @@ export default function Footer() {
           <FadeIn delay={0.2}>
             <h4 className="text-xs uppercase tracking-widest text-main/50 font-bold mb-6">Links</h4>
             <ul className="space-y-4 font-medium flex flex-col items-start">
-              <li><MagneticButton><a href="#" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Home</a></MagneticButton></li>
-              <li><MagneticButton><a href="#works" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Work</a></MagneticButton></li>
-              <li><MagneticButton><a href="#about" className="text-main/80 hover:text-thr transition-colors inline-block py-1">About</a></MagneticButton></li>
-              <li><MagneticButton><a href="mailto:contact@fredyomoke.com" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Contact</a></MagneticButton></li>
+              <li><MagneticButton><Link to="/" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Home</Link></MagneticButton></li>
+              <li><MagneticButton><Link to="/works" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Work</Link></MagneticButton></li>
+              <li><MagneticButton><Link to="/about" className="text-main/80 hover:text-thr transition-colors inline-block py-1">About</Link></MagneticButton></li>
+              <li><MagneticButton><a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-block py-1">Contact</a></MagneticButton></li>
             </ul>
           </FadeIn>
           
@@ -42,7 +43,7 @@ export default function Footer() {
             <ul className="space-y-4 font-medium flex flex-col items-start">
               <li>
                 <MagneticButton>
-                  <a href="mailto:contact@fredyomoke.com" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
+                  <a href="mailto:fredyomoke@gmail.com" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
                     Email <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 transition-all" />
                   </a>
                 </MagneticButton>
@@ -56,7 +57,7 @@ export default function Footer() {
               </li>
               <li>
                 <MagneticButton>
-                  <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
+                  <a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className="text-main/80 hover:text-thr transition-colors inline-flex items-center gap-1 group py-1">
                     WhatsApp <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 translate-x-1 transition-all" />
                   </a>
                 </MagneticButton>
@@ -82,8 +83,8 @@ export default function Footer() {
               </div>
               <div>
                 <h4 className="text-xs uppercase tracking-widest text-main/50 font-bold mb-2">Contact</h4>
-                <p className="text-main/80 font-medium">+1234567890</p>
-                <p className="text-main/80 font-medium">contact@fredyomoke.com</p>
+                <p className="text-main/80 font-medium">+2347039662696</p>
+                <p className="text-main/80 font-medium">fredyomoke@gmail.com</p>
               </div>
             </div>
           </FadeIn>

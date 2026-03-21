@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { RevealLine, FadeIn } from "./Animations";
 import MagneticButton from "./MagneticButton";
-import { Linkedin, Github, MessageCircle } from "lucide-react";
+import { Linkedin, Github } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -43,17 +43,31 @@ export default function Hero() {
           <div className="absolute -bottom-1 -left-[1.5px] w-1 h-1 bg-sec rounded-full" />
         </div>
         <MagneticButton>
-          <a href="#" className="text-sec hover:text-sec/70 transition-colors">
+          <a href="https://www.linkedin.com/in/fredyomoke/" target="_blank" rel="noopener noreferrer" className="text-sec hover:text-sec/70 transition-colors">
             <Linkedin className="w-5 h-5" />
           </a>
         </MagneticButton>
         <MagneticButton>
-          <a href="#" className="text-sec hover:text-sec/70 transition-colors">
-            <MessageCircle className="w-5 h-5" />
+          <a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className="text-sec hover:text-sec/70 transition-colors">
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className="w-5 h-5"
+            >
+              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+            </svg>
           </a>
         </MagneticButton>
         <MagneticButton>
-          <a href="#" className="text-sec hover:text-sec/70 transition-colors">
+          <a href="https://github.com/fredyomoke" target="_blank" rel="noopener noreferrer" className="text-sec hover:text-sec/70 transition-colors">
             <Github className="w-5 h-5" />
           </a>
         </MagneticButton>
@@ -72,16 +86,6 @@ export default function Hero() {
         <span className="text-xs font-medium tracking-widest text-black -rotate-90 mt-6 mb-4">Honors</span>
       </div>
 
-      {/* Bottom Right Button */}
-      <div className="fixed bottom-8 right-8 z-50 hidden lg:block">
-        <MagneticButton>
-          <button className="w-14 h-14 rounded-full bg-sec flex items-center justify-center hover:bg-sec/90 transition-colors text-main">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 12c2-4 6-4 8 0s6 4 8 0" />
-            </svg>
-          </button>
-        </MagneticButton>
-      </div>
     </section>
   );
 }

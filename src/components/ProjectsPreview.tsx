@@ -3,31 +3,32 @@ import { ArrowUpRight } from "lucide-react";
 import { RevealLine, FadeIn } from "./Animations";
 import { motion, useScroll, useTransform } from "motion/react";
 import MagneticButton from "./MagneticButton";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
     title: "VexLogic ai",
     category: "SaaS Platform",
     image: "https://picsum.photos/seed/vexlogic/800/600",
-    link: "#"
+    link: "/project/vexlogic-ai-assistant"
   },
   {
     title: "VexLogic bussiness",
     category: "Business Solution",
     image: "https://picsum.photos/seed/vexlogicbiz/800/600",
-    link: "#"
+    link: "/project/vexlogic-business-expander"
   },
   {
     title: "Comra",
     category: "Web Application",
     image: "https://picsum.photos/seed/comra/800/600",
-    link: "#"
+    link: "/project/comra"
   },
   {
     title: "Superhost",
     category: "Management Dashboard",
     image: "https://picsum.photos/seed/superhost/800/600",
-    link: "#"
+    link: "/project/superhost"
   }
 ];
 
@@ -42,7 +43,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
 
   return (
     <FadeIn delay={index * 0.1}>
-      <a href={project.link} className="group block" data-cursor="View">
+      <Link to={project.link} className="group block" data-cursor="View">
         <div ref={ref} className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3] bg-sec/10">
           <motion.img 
             style={{ y, scale: 1.1 }}
@@ -65,7 +66,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0], index: n
             <ArrowUpRight className="w-5 h-5" />
           </div>
         </div>
-      </a>
+      </Link>
     </FadeIn>
   );
 }
@@ -89,10 +90,10 @@ export default function ProjectsPreview() {
           </div>
           <FadeIn delay={0.3}>
             <MagneticButton>
-              <a href="#works" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-sec/60 transition-colors group">
+              <Link to="/works" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider hover:text-sec/60 transition-colors group">
                 All Projects
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </a>
+              </Link>
             </MagneticButton>
           </FadeIn>
         </div>

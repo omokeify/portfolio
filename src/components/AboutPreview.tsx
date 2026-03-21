@@ -4,6 +4,7 @@ import MagneticButton from "./MagneticButton";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,14 +54,14 @@ export default function AboutPreview() {
         <FadeIn delay={0.3}>
           <div className="flex items-center gap-2 mt-8">
             <MagneticButton>
-              <a href="#about" className="inline-flex items-center justify-center bg-thr text-sec px-8 py-4 rounded-full font-medium hover:bg-thr/90 transition-colors">
+              <Link to="/about" className="inline-flex items-center justify-center bg-thr text-sec px-8 py-4 rounded-full font-medium hover:bg-thr/90 transition-colors">
                 About Me
-              </a>
+              </Link>
             </MagneticButton>
             <MagneticButton>
-              <a href="#about" className="inline-flex items-center justify-center bg-thr text-sec w-14 h-14 rounded-full hover:bg-thr/90 transition-colors group">
+              <Link to="/about" className="inline-flex items-center justify-center bg-thr text-sec w-14 h-14 rounded-full hover:bg-thr/90 transition-colors group">
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              </Link>
             </MagneticButton>
           </div>
         </FadeIn>

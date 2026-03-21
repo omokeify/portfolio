@@ -1,10 +1,11 @@
 import { motion } from "motion/react";
-import { ReactNode } from "react";
+import { ReactNode, Key } from "react";
 
 interface RevealProps {
   children: ReactNode;
   delay?: number;
   className?: string;
+  key?: Key;
 }
 
 export function RevealLine({ children, delay = 0, className = "" }: RevealProps) {

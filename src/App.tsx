@@ -4,19 +4,20 @@
  */
 
 import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import AboutPreview from "./components/AboutPreview";
-import Services from "./components/Services";
-import ProjectsPreview from "./components/ProjectsPreview";
-import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
 import Preloader from "./components/Preloader";
-import Marquee from "./components/Marquee";
 import MusicPlayer from "./components/MusicPlayer";
 import BackgroundWave from "./components/BackgroundWave";
+import ScrollToTop from "./components/ScrollToTop";
+
+import Home from "./pages/Home";
+import Works from "./pages/Works";
+import About from "./pages/About";
+import ProjectDetail from "./pages/ProjectDetail";
 
 export default function App() {
   useEffect(() => {
@@ -43,20 +44,22 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-main text-sec min-h-screen font-sans selection:bg-sec selection:text-main">
-      <BackgroundWave />
-      <Preloader />
-      <CustomCursor />
-      <Navbar />
-      <MusicPlayer />
-      <main>
-        <Hero />
-        <AboutPreview />
-        <Services />
-        <ProjectsPreview />
-        <Experience />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="bg-main text-sec min-h-screen font-sans selection:bg-sec selection:text-main transition-colors duration-700">
+        <BackgroundWave />
+        <Preloader />
+        <CustomCursor />
+        <Navbar />
+        <MusicPlayer />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/works" element={<Works />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/project/:slug" element={<ProjectDetail />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }

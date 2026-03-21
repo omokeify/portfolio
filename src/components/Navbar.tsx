@@ -1,6 +1,7 @@
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import MagneticButton from "./MagneticButton";
 
 export default function Navbar() {
@@ -17,10 +18,10 @@ export default function Navbar() {
   });
 
   const links = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Works", href: "#works" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Works", href: "/works" },
+    { name: "Contact", href: "https://wa.me/2347039662696" },
   ];
 
   return (
@@ -28,9 +29,9 @@ export default function Navbar() {
       {/* Main Navbar */}
       <nav className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 py-6 text-sec transition-transform duration-500 ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}>
         <MagneticButton>
-          <a href="#" className="text-3xl font-bold tracking-tighter inline-flex items-center">
+          <Link to="/" className="text-3xl font-bold tracking-tighter inline-flex items-center">
             F<span className="w-1 h-6 bg-sec ml-1"></span>
-          </a>
+          </Link>
         </MagneticButton>
 
         {/* Desktop Nav */}
@@ -39,18 +40,18 @@ export default function Navbar() {
             {links.slice(0, 3).map((link) => (
               <div key={link.name}>
                 <MagneticButton>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-sm font-medium hover:opacity-70 transition-opacity"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </MagneticButton>
               </div>
             ))}
           </div>
           <MagneticButton>
-            <a href="#contact" className="bg-sec text-main px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 hover:scale-105 transition-transform">
+            <a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className="bg-sec text-main px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 hover:scale-105 transition-transform">
               Contact
               <div className="bg-main text-sec rounded-full p-1">
                 <ArrowUpRight className="w-3 h-3" />
@@ -119,14 +120,27 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 + i * 0.1 }}
                   >
-                    <a
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter hover:text-main/70 transition-colors flex justify-between items-center group"
-                    >
-                      {link.name}
-                      <span className="text-2xl md:text-4xl font-light opacity-50 group-hover:opacity-100 transition-opacity">+</span>
-                    </a>
+                    {link.href.startsWith('http') || link.href.startsWith('mailto:') ? (
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('http') ? "_blank" : undefined}
+                        rel={link.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                        onClick={() => setIsOpen(false)}
+                        className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter hover:text-main/70 transition-colors flex justify-between items-center group"
+                      >
+                        {link.name}
+                        <span className="text-2xl md:text-4xl font-light opacity-50 group-hover:opacity-100 transition-opacity">+</span>
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter hover:text-main/70 transition-colors flex justify-between items-center group"
+                      >
+                        {link.name}
+                        <span className="text-2xl md:text-4xl font-light opacity-50 group-hover:opacity-100 transition-opacity">+</span>
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </div>
