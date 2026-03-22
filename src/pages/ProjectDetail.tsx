@@ -566,8 +566,11 @@ export default function ProjectDetail() {
             className="fixed bottom-8 right-8 w-72 md:w-96 aspect-video bg-black rounded-xl overflow-hidden shadow-2xl z-[100] border border-sec/20"
           >
             <button 
-              onClick={() => setIsDismissed(true)}
-              className="absolute top-2 right-2 z-10 p-1.5 bg-black/50 text-white rounded-full hover:bg-black/70 backdrop-blur-md transition-all"
+              onClick={() => {
+                setIsDismissed(true);
+                window.dispatchEvent(new CustomEvent('music-unduck'));
+              }}
+              className="absolute top-2 right-2 z-10 p-1.5 bg-black/50 text-white rounded-full hover:bg-black/70 backdrop-blur-md transition-all pointer-events-auto"
               aria-label="Close Preview"
             >
               <X className="w-4 h-4" />
@@ -575,11 +578,12 @@ export default function ProjectDetail() {
             <video 
               src={project.videoUrl} 
               autoPlay 
-              muted 
               loop 
+              controls
               onPlay={() => window.dispatchEvent(new CustomEvent('music-duck'))}
               onPause={() => window.dispatchEvent(new CustomEvent('music-unduck'))}
-              className="w-full h-full object-cover pointer-events-none"
+              onEnded={() => window.dispatchEvent(new CustomEvent('music-unduck'))}
+              className="w-full h-full object-cover pointer-events-auto"
             />
             
             {/* Overlay Info */}

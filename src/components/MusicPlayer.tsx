@@ -8,74 +8,57 @@ export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const location = useLocation();
   
-  // Logic to determine if we are in a Web3 context
   const web3ProjectSlugs = ["harapay", "arcle", "ai-sales-inbox"];
   const isWeb3Path = location.pathname.startsWith("/web3");
   const isWeb3Project = location.pathname.startsWith("/project/") && 
                         web3ProjectSlugs.some(slug => location.pathname.includes(slug));
-  
   const isWeb3 = isWeb3Path || isWeb3Project;
 
   const web2Music = "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3";
   const web3Music = "https://cdn.pixabay.com/audio/2026/02/20/audio_91db1f3017.mp3";
+  const currentSource = isWeb3 ? web3Music : web2Music;
 
+  // Handle Autoplay on Interaction
   useEffect(() => {
-    // Attempt to autoplay on ANY user interaction
     const startAutoplay = () => {
       if (audioRef.current && audioRef.current.paused) {
+        audioRef.current.volume = 0.3;
         audioRef.current.play().then(() => {
           setIsPlaying(true);
-          console.log("Music session started by interaction");
-        }).catch(err => {
-          console.warn("Playback blocked by browser policy even after interaction:", err);
-        });
+        }).catch(err => console.warn("Autoplay still blocked:", err));
       }
-      // Cleanup listeners immediately to prevent multiple triggers
+      cleanupListeners();
+    };
+
+    const cleanupListeners = () => {
       window.removeEventListener('pointerdown', startAutoplay);
       window.removeEventListener('keydown', startAutoplay);
+      window.removeEventListener('click', startAutoplay);
     };
 
     window.addEventListener('pointerdown', startAutoplay);
-    window.addEventListener('touchstart', startAutoplay);
-    window.addEventListener('click', startAutoplay);
     window.addEventListener('keydown', startAutoplay);
+    window.addEventListener('click', startAutoplay);
 
-    return () => {
-      window.removeEventListener('pointerdown', startAutoplay);
-      window.removeEventListener('touchstart', startAutoplay);
-      window.removeEventListener('click', startAutoplay);
-      window.removeEventListener('keydown', startAutoplay);
-    };
-  }, []);
+    return cleanupListeners;
+  }, []); // Only on mount
 
+  // Sync source and handle ducking
   useEffect(() => {
-    const handleDuck = () => {
-      if (audioRef.current) audioRef.current.volume = 0.05;
-    };
-    const handleUnduck = () => {
-      if (audioRef.current) audioRef.current.volume = 0.3;
-    };
+    const handleDuck = () => { if (audioRef.current) audioRef.current.volume = 0.05; };
+    const handleUnduck = () => { if (audioRef.current) audioRef.current.volume = 0.3; };
 
     window.addEventListener('music-duck', handleDuck);
     window.addEventListener('music-unduck', handleUnduck);
 
     if (audioRef.current) {
-      audioRef.current.volume = 0.3;
-      
-      const currentSource = isWeb3 ? web3Music : web2Music;
-      
+      // If source changes, update it and preserve state
       if (audioRef.current.src !== currentSource) {
+        const wasPlaying = !audioRef.current.paused;
         audioRef.current.src = currentSource;
         audioRef.current.load();
-        
-        if (isPlaying) {
-          const playPromise = audioRef.current.play();
-          if (playPromise !== undefined) {
-            playPromise.catch((error) => {
-              console.log("Playback interrupted or blocked:", error);
-              setIsPlaying(false);
-            });
-          }
+        if (wasPlaying || isPlaying) {
+          audioRef.current.play().catch(() => setIsPlaying(false));
         }
       }
     }
@@ -84,16 +67,16 @@ export default function MusicPlayer() {
       window.removeEventListener('music-duck', handleDuck);
       window.removeEventListener('music-unduck', handleUnduck);
     };
-  }, [isWeb3, isPlaying]);
+  }, [currentSource, isPlaying]);
 
   const togglePlay = () => {
     if (audioRef.current) {
-      if (isPlaying) {
+      if (!audioRef.current.paused) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play().catch(err => console.error("Play failed:", err));
+        audioRef.current.play().then(() => setIsPlaying(true)).catch(err => console.error(err));
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
