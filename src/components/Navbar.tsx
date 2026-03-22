@@ -9,7 +9,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
   const location = useLocation();
-  const isWeb3 = location.pathname.startsWith("/web3");
+  const web3ProjectSlugs = ["harapay", "arcle", "ai-sales-inbox"];
+  const isWeb3 = location.pathname.startsWith("/web3") || 
+                 (location.pathname.startsWith("/project/") && web3ProjectSlugs.some(slug => location.pathname.includes(slug)));
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100) {

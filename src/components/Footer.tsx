@@ -7,6 +7,10 @@ export default function Footer() {
   const [scrollHue, setScrollHue] = useState(75);
   const location = useLocation();
   const isProjectPage = location.pathname.startsWith('/project');
+  
+  const web3ProjectSlugs = ["harapay", "arcle", "ai-sales-inbox"];
+  const isWeb3 = location.pathname.startsWith("/web3") || 
+                 (location.pathname.startsWith("/project/") && web3ProjectSlugs.some(slug => location.pathname.includes(slug)));
 
   useEffect(() => {
     const updateTime = () => {
@@ -56,8 +60,8 @@ export default function Footer() {
             <div className="min-w-[100px]">
               <h4 className={`text-[10px] uppercase tracking-[0.2em] ${textMutedClass} font-bold mb-6`}>Links</h4>
               <ul className="space-y-3 font-medium text-sm">
-                <li><MagneticButton><Link to="/" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Home</Link></MagneticButton></li>
-                <li><MagneticButton><Link to="/works" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Work</Link></MagneticButton></li>
+                <li><MagneticButton><Link to={isWeb3 ? "/web3" : "/"} className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Home</Link></MagneticButton></li>
+                <li><MagneticButton><Link to={isWeb3 ? "/web3-works" : "/works"} className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Work</Link></MagneticButton></li>
                 <li><MagneticButton><Link to="/about" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>About</Link></MagneticButton></li>
                 <li><MagneticButton><a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Contact</a></MagneticButton></li>
               </ul>
