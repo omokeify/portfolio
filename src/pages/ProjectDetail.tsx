@@ -181,7 +181,7 @@ export default function ProjectDetail() {
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-24">
             <div className="lg:w-2/3">
               <FadeIn>
-                <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter text-black leading-none">
+                <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter text-sec leading-none py-4">
                   {project.title}
                 </h1>
               </FadeIn>
