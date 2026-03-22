@@ -13,6 +13,7 @@ import Preloader from "./components/Preloader";
 import MusicPlayer from "./components/MusicPlayer";
 import BackgroundWave from "./components/BackgroundWave";
 import ScrollToTop from "./components/ScrollToTop";
+import HonorsBadge from "./components/HonorsBadge";
 
 import Home from "./pages/Home";
 import Works from "./pages/Works";
@@ -52,6 +53,7 @@ export default function App() {
         <CustomCursor />
         <Navbar />
         <MusicPlayer />
+        <HonorsBadge />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/works" element={<Works />} />
