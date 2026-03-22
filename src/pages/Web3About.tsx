@@ -56,7 +56,7 @@ export default function Web3About() {
             </RevealLine>
             <FadeIn delay={0.2}>
               <p className="text-lg lg:text-xl xl:text-2xl leading-relaxed max-w-full lg:max-w-4xl xl:max-w-5xl text-sec/80 font-medium">
-                I build the invisible rails of the decentralized economy. Most of my work sits at the intersection of Blockchain infrastructure, Payment Orchestration, and Crypto-to-Fiat bridging. I specialization in translating complex protocol logic into polished, production-ready products—whether that's a USSD-based crypto payment gateway like HaraPay or high-security liquidity rails like Arcle. I focus heavily on institutional-grade security and meaningful real-world adoption.
+                I build the invisible rails and manage the human ecosystems of the decentralized economy. Most of my work sits at the intersection of Blockchain infrastructure, Ecosystem Management, and Community Growth. From architecting USSD crypto gateways like HaraPay to hosting IRL events and writing technical whitepapers, I bridge the gap between protocol logic and real-world adoption. I'm a multi-chain builder with hands-on experience across Base, Hedera, Solana, Flow, BNB, and Cardano.
               </p>
             </FadeIn>
           </div>
@@ -98,19 +98,23 @@ export default function Web3About() {
 
       {/* Web3 Specific Skills */}
       <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="w-full pt-32 pb-16 px-6 md:px-12 lg:px-24">
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {[
             {
               skill: "Payment Orchestration",
               p: "I architect payment rails that bridge crypto and fiat. My expertise covers cross-border settlement using stablecoins, USSD-to-Crypto gateways for offline accessibility, and multi-signature wallet infrastructures for secure corporate treasury management."
             },
             {
-              skill: "Liquidity Infrastructure",
-              p: "Building the backend of decentralized finance—leveraging smart contracts and off-chain liquidity engines to ensure instant, low-cost swaps and payments. I specialize in optimizing order routing and managing deep integration with Layer 1 and Layer 2 protocols."
+              skill: "Ecosystem Management",
+              p: "Beyond code, I lead growth. I manage multi-chain communities, handle social media strategy for top-tier projects, and manage decentralized marketing campaigns that turn technical protocols into household names."
             },
             {
-              skill: "Protocol Integration",
-              p: "Deep technical experience with Hedera, Ethereum, and Polygon. I build robust SDK wrappers and middleware that allow legacy enterprises to communicate with distributed ledgers without rebuilding their entire stack from scratch."
+              skill: "Protocol Narrative",
+              p: "I translate complexity into clarity. I author technical whitepapers, comprehensive documentation, and educational content that empowers developers and investors to understand and build on emerging decentralized architectures."
+            },
+            {
+              skill: "IRL Events & Education",
+              p: "I bridge the digital and physical worlds by hosting IRL Web3 events, workshops, and educational seminars. I focus on onboarding the next wave of builders and users through hands-on demonstrations and strategic ecosystem networking."
             }
           ].map((item, index) => (
             <FadeIn key={index} delay={0.2 + index * 0.1} className="flex flex-col">
@@ -203,28 +207,28 @@ export default function Web3About() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
               {
-                category: "Solidity & Smart Contracts",
-                techs: ["Solidity", "Hardhat", "Foundry", "OpenZeppelin", "Slither", "EVM"]
+                category: "Blockchains & Ecosystems",
+                techs: ["Base", "Hedera Hashgraph", "Solana", "Flow", "BNB Chain", "Cardano", "Ethereum", "Polygon"]
               },
               {
-                category: "Web3 SDKs & Tooling",
-                techs: ["Web3.js", "Ethers.js", "Viem", "Wagmi", "Alchemy", "Infura", "The Graph"]
+                category: "Growth & Strategy",
+                techs: ["Web3 Marketing", "Social Media Management", "Community Ops", "Growth Hacking", "IRL Events", "Education"]
               },
               {
-                category: "Infrastructure & Protocols",
-                techs: ["Hedera SDK", "IPFS", "Arweave", "Chainlink", "Uniswap V3 SDK"]
+                category: "Smart Contracts & Dev",
+                techs: ["Solidity", "Rust", "Hardhat", "Foundry", "Viem/Wagmi", "Web3.js", "Ethers.js"]
               },
               {
-                category: "Security & Custody",
-                techs: ["Gnosis Safe", "Fireblocks API", "ECDSA", "Multi-Sig Architecture"]
+                category: "Docs & Architecture",
+                techs: ["Whitepaper Authoring", "Technical Documentation", "SDK Design", "IPFS", "Arweave", "Chainlink"]
               },
               {
-                category: "Backend Rails",
-                techs: ["Node.js", "NestJS", "PostgreSQL", "BullMQ", "Redis", "WebSockets"]
+                category: "Security & Infrastructure",
+                techs: ["Multi-Sig", "Gnosis Safe", "Security Auditing", "CI/CD", "Docker", "Nginx", "PM2"]
               },
               {
-                category: "Automation & CI/CD",
-                techs: ["Docker", "Github Actions", "Tenderly", "Moralis Streams"]
+                category: "Core Systems & UI",
+                techs: ["Node.js", "Express/Fastify", "PostgreSQL", "Redis", "React", "Next.js", "Tailwind CSS"]
               }
             ].map((category, index) => (
               <FadeIn key={index} delay={0.3 + index * 0.1} className="flex flex-col">
