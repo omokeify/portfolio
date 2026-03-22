@@ -11,7 +11,7 @@ export default function SystemsArchitecture() {
 
   return (
     <section className="py-24 bg-main text-sec border-t border-sec/10 relative z-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+      <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2">
             <RevealLine>

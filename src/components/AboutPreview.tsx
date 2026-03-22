@@ -37,7 +37,7 @@ export default function AboutPreview() {
         <div className="absolute right-[-10%] rounded-[50%] h-[150%] w-[120%] bg-sec" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-50 flex flex-col items-center justify-center min-h-[60vh]">
+      <div className="w-full px-6 md:px-12 lg:px-16 xl:px-24">
         <div className="text-center max-w-4xl mx-auto mb-12">
           <RevealLine>
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-tight">

@@ -8,22 +8,22 @@ import FlowingMenu from "../FlowingMenu";
 
 const projects = [
   {
-    title: "DeFi Yield Aggregator",
-    category: "Smart Contracts & Frontend",
-    image: "https://picsum.photos/seed/defi/800/600",
-    link: "#"
+    title: "HaraPay — Offline Crypto",
+    category: "Web3 Infrastructure",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop",
+    link: "/project/harapay"
   },
   {
-    title: "NFT Marketplace",
-    category: "Full Stack Web3",
-    image: "https://picsum.photos/seed/nft/800/600",
-    link: "#"
+    title: "Arcle — Payment Bridge",
+    category: "Fintech Rails",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
+    link: "/project/arcle"
   },
   {
-    title: "DAO Governance Portal",
-    category: "dApp Development",
-    image: "https://picsum.photos/seed/dao/800/600",
-    link: "#"
+    title: "Smart Inbox — AI Sales",
+    category: "AI & Automation",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2000&auto=format&fit=crop",
+    link: "/project/ai-sales-inbox"
   }
 ];
 
@@ -80,8 +80,8 @@ export default function Web3ProjectsPreview() {
   }));
 
   return (
-    <section id="web3-works" className="py-24 px-6 md:px-12 lg:px-24 bg-main text-sec">
-      <div className="max-w-7xl mx-auto">
+    <section id="web3-works" className="py-24 px-6 md:px-12 lg:px-16 xl:px-24 bg-main text-sec">
+      <div className="w-full">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div>
             <RevealLine>

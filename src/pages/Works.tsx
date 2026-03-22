@@ -88,8 +88,8 @@ export default function Works() {
   }));
 
   return (
-    <main className="pt-32 pb-24 px-6 md:px-12 lg:px-24 bg-main text-sec min-h-screen">
-      <div className="max-w-7xl mx-auto">
+    <main className="pt-32 pb-24 px-6 md:px-12 lg:px-16 xl:px-24 bg-main text-sec min-h-screen">
+      <div className="w-full">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <RevealLine>

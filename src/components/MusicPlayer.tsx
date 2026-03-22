@@ -4,40 +4,52 @@ import { useLocation } from 'react-router-dom';
 import MagneticButton from './MagneticButton';
 
 export default function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const location = useLocation();
-  const isWeb3 = location.pathname.startsWith("/web3");
+  
+  // Logic to determine if we are in a Web3 context
+  const web3ProjectSlugs = ["harapay", "arcle", "ai-sales-inbox"];
+  const isWeb3Path = location.pathname.startsWith("/web3");
+  const isWeb3Project = location.pathname.startsWith("/project/") && 
+                        web3ProjectSlugs.some(slug => location.pathname.includes(slug));
+  
+  const isWeb3 = isWeb3Path || isWeb3Project;
 
-  const web2Music = "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3";
-  const web3Music = "https://cdn.pixabay.com/download/audio/2022/02/07/audio_671b20ceb0.mp3?filename=just-relax-11157.mp3";
+  // Verified working links from Pixabay
+  const web2Music = "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3";
+  const web3Music = "https://cdn.pixabay.com/audio/2026/02/20/audio_91db1f3017.mp3";
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.3;
       
-      // Force reload the new source
-      audioRef.current.load();
+      const currentSource = isWeb3 ? web3Music : web2Music;
       
-      // If it was already playing, or we want to attempt autoplay
-      if (isPlaying) {
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((error) => {
-            console.log("Autoplay prevented:", error);
-            setIsPlaying(false);
-          });
+      // Only reload if the source actually changed to avoid restart on same-context navigation
+      if (audioRef.current.src !== currentSource) {
+        audioRef.current.src = currentSource;
+        audioRef.current.load();
+        
+        if (isPlaying) {
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log("Playback interrupted or blocked:", error);
+              setIsPlaying(false);
+            });
+          }
         }
       }
     }
-  }, [isWeb3]);
+  }, [isWeb3, isPlaying]);
 
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        audioRef.current.play().catch(err => console.error("Play failed:", err));
       }
       setIsPlaying(!isPlaying);
     }
@@ -48,8 +60,6 @@ export default function MusicPlayer() {
       <audio
         ref={audioRef}
         loop
-        autoPlay
-        src={isWeb3 ? web3Music : web2Music}
       />
       <MagneticButton>
         <button
