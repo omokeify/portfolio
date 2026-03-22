@@ -21,12 +21,21 @@ export default function MusicPlayer() {
   const web3Music = "https://cdn.pixabay.com/audio/2026/02/20/audio_91db1f3017.mp3";
 
   useEffect(() => {
+    const handleDuck = () => {
+      if (audioRef.current) audioRef.current.volume = 0.05;
+    };
+    const handleUnduck = () => {
+      if (audioRef.current) audioRef.current.volume = 0.3;
+    };
+
+    window.addEventListener('music-duck', handleDuck);
+    window.addEventListener('music-unduck', handleUnduck);
+
     if (audioRef.current) {
       audioRef.current.volume = 0.3;
       
       const currentSource = isWeb3 ? web3Music : web2Music;
       
-      // Only reload if the source actually changed to avoid restart on same-context navigation
       if (audioRef.current.src !== currentSource) {
         audioRef.current.src = currentSource;
         audioRef.current.load();
@@ -42,6 +51,11 @@ export default function MusicPlayer() {
         }
       }
     }
+
+    return () => {
+      window.removeEventListener('music-duck', handleDuck);
+      window.removeEventListener('music-unduck', handleUnduck);
+    };
   }, [isWeb3, isPlaying]);
 
   const togglePlay = () => {

@@ -361,6 +361,9 @@ export default function ProjectDetail() {
                   autoPlay
                   muted
                   loop
+                  onPlay={() => window.dispatchEvent(new CustomEvent('music-duck'))}
+                  onPause={() => window.dispatchEvent(new CustomEvent('music-unduck'))}
+                  onEnded={() => window.dispatchEvent(new CustomEvent('music-unduck'))}
                   className="w-full h-full object-cover"
                   poster={project.heroImage}
                 >
@@ -574,6 +577,8 @@ export default function ProjectDetail() {
               autoPlay 
               muted 
               loop 
+              onPlay={() => window.dispatchEvent(new CustomEvent('music-duck'))}
+              onPause={() => window.dispatchEvent(new CustomEvent('music-unduck'))}
               className="w-full h-full object-cover pointer-events-none"
             />
             
