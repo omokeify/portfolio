@@ -12,9 +12,6 @@ export default function Hero() {
         <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-gradient-to-tr from-purple-400 via-yellow-300 to-blue-400 rounded-full blur-3xl mix-blend-multiply animate-pulse" />
       </div>
 
-      {/* Decorative Circle */}
-      <div className="absolute left-[25%] top-[25%] w-8 h-8 rounded-full border-2 border-sec/80 hidden lg:block z-10" />
-
       {/* Main Text */}
       <div className="z-10 flex flex-col items-center text-center mt-12">
         <RevealLine delay={0.1}>

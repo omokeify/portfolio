@@ -41,12 +41,12 @@ export default function AboutPreview() {
         <div className="text-center max-w-4xl mx-auto mb-12">
           <RevealLine>
             <h2 className="text-3xl md:text-5xl font-medium tracking-tight mb-8 leading-tight">
-              I'm Fredy Omoke — a Full Stack Developer crafting fast, scalable, and immersive digital experiences that merge creativity with engineering precision.
+              I’m Fredy Omoke, and I build real systems that connect infrastructure to real-world impact. Most developers focus on code. I focus on adoption.
             </h2>
           </RevealLine>
           <FadeIn delay={0.2}>
             <p className="text-lg md:text-2xl text-main/70 leading-relaxed">
-              I specialize in developing SaaS platforms, AI-driven products, and interactive 3D web experiences using technologies like Next.js, Node.js, and Three.js.
+              Whether it's deploying financial rails for offline users in Africa or architecting AI-driven sales engines, I bridge the gap between complex tech and simple UX.
             </p>
           </FadeIn>
         </div>
