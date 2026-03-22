@@ -79,11 +79,10 @@ export default function Footer() {
                 <li><MagneticButton><a href="mailto:fredyomoke@gmail.com" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Email</a></MagneticButton></li>
                 <li><MagneticButton><a href="https://www.linkedin.com/in/fredyomoke/" target="_blank" rel="noopener noreferrer" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>LinkedIn</a></MagneticButton></li>
                 <li><MagneticButton><a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Whatsapp</a></MagneticButton></li>
-                <li><MagneticButton><a href="https://github.com/fredyomoke" target="_blank" rel="noopener noreferrer" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Github</a></MagneticButton></li>
+                <li><MagneticButton><a href="https://github.com/omokeify" target="_blank" rel="noopener noreferrer" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Github</a></MagneticButton></li>
               </ul>
             </div>
-
-            {/* Local Time */}
+                    {/* Local Time */}
             <div className="min-w-[120px]">
               <h4 className={`text-[10px] uppercase tracking-[0.2em] ${textMutedClass} font-bold mb-6`}>Local Time</h4>
               <p className={`${textNormalClass} font-medium text-sm uppercase`}>{time}</p>

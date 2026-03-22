@@ -64,7 +64,7 @@ export default function Hero() {
           </a>
         </MagneticButton>
         <MagneticButton>
-          <a href="https://github.com/fredyomoke" target="_blank" rel="noopener noreferrer" className="text-sec hover:text-sec/70 transition-colors">
+          <a href="https://github.com/omokeify" target="_blank" rel="noopener noreferrer" className="text-sec hover:text-sec/70 transition-colors">
             <Github className="w-5 h-5" />
           </a>
         </MagneticButton>
