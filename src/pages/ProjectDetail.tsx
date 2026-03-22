@@ -1,8 +1,8 @@
-import { useEffect, useRef, ReactNode } from "react";
+import { useEffect, useRef, ReactNode, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, AnimatePresence } from "motion/react";
 import { RevealLine, FadeIn } from "../components/Animations";
-import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { ArrowUpRight, ArrowDown, X } from "lucide-react";
 import MagneticButton from "../components/MagneticButton";
 
 interface ThemeSectionProps {
@@ -283,6 +283,18 @@ export default function ProjectDetail() {
     }
   ];
 
+  const [isDismissed, setIsDismissed] = useState(false);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
+  const isVideoInView = useInView(videoSectionRef, { 
+    amount: 0.1,
+    once: false 
+  });
+
+  // Reset dismissal when main video enters view again
+  useEffect(() => {
+    if (isVideoInView) setIsDismissed(false);
+  }, [isVideoInView]);
+
   const currentIndex = allProjects.findIndex(p => p.slug === slug);
   const project = currentIndex !== -1 ? allProjects[currentIndex] : allProjects[0];
   
@@ -339,10 +351,16 @@ export default function ProjectDetail() {
               </h2>
             </RevealLine>
             <FadeIn delay={0.2}>
-              <div className="w-full aspect-video rounded-2xl overflow-hidden bg-black/20 relative group border border-sec/10">
+              <div 
+                ref={videoSectionRef}
+                className="w-full aspect-video rounded-2xl overflow-hidden bg-black/20 relative group border border-sec/10"
+              >
                 <video 
                   src={project.videoUrl} 
                   controls 
+                  autoPlay
+                  muted
+                  loop
                   className="w-full h-full object-cover"
                   poster={project.heroImage}
                 >
@@ -535,6 +553,38 @@ export default function ProjectDetail() {
           </FadeIn>
         </div>
       </ThemeSection>
+      {/* Floating Video Overlay */}
+      <AnimatePresence>
+        {project.videoUrl && !isVideoInView && !isDismissed && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.8 }}
+            className="fixed bottom-8 right-8 w-72 md:w-96 aspect-video bg-black rounded-xl overflow-hidden shadow-2xl z-[100] border border-sec/20"
+          >
+            <button 
+              onClick={() => setIsDismissed(true)}
+              className="absolute top-2 right-2 z-10 p-1.5 bg-black/50 text-white rounded-full hover:bg-black/70 backdrop-blur-md transition-all"
+              aria-label="Close Preview"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <video 
+              src={project.videoUrl} 
+              autoPlay 
+              muted 
+              loop 
+              className="w-full h-full object-cover pointer-events-none"
+            />
+            
+            {/* Overlay Info */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
+               <p className="text-[10px] font-bold uppercase tracking-widest text-white/60 mb-1">Live Interaction</p>
+               <p className="text-xs font-bold text-white uppercase">{project.title}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
