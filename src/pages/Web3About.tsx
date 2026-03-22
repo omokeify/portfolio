@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { useInView, motion } from "motion/react";
 import { RevealLine, FadeIn } from "../components/Animations";
 import MagneticButton from "../components/MagneticButton";
@@ -32,17 +33,6 @@ function ThemeSection({ mainColor, secColor, children, className = "" }: ThemeSe
 }
 
 export default function Web3About() {
-  const [hue, setHue] = useState(180); // Web3 themed initial hue
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const newHue = (180 + window.scrollY * 0.05) % 360;
-      setHue(newHue);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   // Reset theme on unmount
   useEffect(() => {
     return () => {
@@ -262,68 +252,69 @@ export default function Web3About() {
         </div>
       </ThemeSection>
 
-      {/* CTA Section & Marquees (Consistent Branding with Hue Scroll) */}
-      <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="w-full pt-32 pb-0 overflow-hidden">
-        <div className="w-full px-6 md:px-12 lg:px-24 mb-10">
+      {/* Section 4: CTA Footer (Project Style) */}
+      <ThemeSection mainColor="#d4f534" secColor="#1e1e1e" className="py-32 overflow-hidden text-center">
+        
+        {/* Marquee Transition */}
+        <div className="w-full overflow-hidden mb-24 -rotate-2 bg-sec text-main py-4">
+          <motion.div
+            className="flex whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
+          >
+            {Array(6).fill("✦ DECENTRALIZED WORK ✦ EXPLORE ECOSYSTEMS ").map((text, i) => (
+              <span key={i} className="text-4xl md:text-6xl font-bold tracking-tighter uppercase pr-8">
+                {text}
+              </span>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-24">
           <FadeIn>
-            <div 
-              className="py-16 px-8 md:py-20 md:px-16 rounded-3xl text-center max-w-6xl mx-auto transition-colors duration-500"
-              style={{ 
-                backgroundColor: `hsla(${hue}, 40%, 10%, 1)`, // Deep tinted background
-                color: '#e7e7e7' // Light text
-              }}
-            >
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6 uppercase">
-                Ready to Architect the Future?
+            <p className="text-sm md:text-base font-bold uppercase tracking-widest text-sec/50 mb-6">
+              Next Step
+            </p>
+            <Link to="/web3-works" className="group inline-block">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase mb-8 text-sec group-hover:opacity-70 transition-opacity">
+                Explore My Web3 Works
               </h2>
-              <p className="text-base md:text-lg text-main/70 max-w-3xl mx-auto leading-relaxed">
-                Whether you're building a decentralized payment gateway, institutional liquidity rails, or complex protocol integrations, I bring the technical depth to turn decentralized theory into production-ready infrastructure.
-              </p>
-            </div>
+              <MagneticButton>
+                <div className="w-20 h-20 mx-auto rounded-full bg-sec text-main flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <ArrowUpRight className="w-8 h-8" />
+                </div>
+              </MagneticButton>
+            </Link>
           </FadeIn>
         </div>
-
-        {/* Criss-Cross Marquees with Tinted Background */}
-        <div className="relative w-full h-[40vh] md:h-[50vh] flex items-center justify-center mt-10">
-          <div 
-            className="absolute w-[110%] py-4 md:py-6 transform -rotate-3 z-0 flex overflow-hidden transition-colors duration-500"
-            style={{ backgroundColor: `hsla(${hue}, 40%, 12%, 1)`, color: '#e7e7e7' }}
-          >
-            <motion.div
-              className="flex whitespace-nowrap items-center"
-              animate={{ x: ["-50%", "0%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
-            >
-              {Array(4).fill("Decentralized Rails ✺ Secure Smart Contracts ✺ Protocol Engineering ✺ Institutional Liquidity ✺ Stablecoin Settlement ✺ ").map((text, i) => (
-                <span key={i} className="text-2xl md:text-4xl font-bold tracking-wide pr-4 uppercase italic">
-                  {text}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-
-          <div 
-            className="absolute w-[110%] py-4 md:py-6 transform rotate-3 z-10 flex overflow-hidden shadow-2xl border-y transition-colors duration-500"
-            style={{ 
-              backgroundColor: `hsla(${hue}, 40%, 8%, 1)`, 
-              color: '#e7e7e7',
-              borderColor: `hsla(${hue}, 60%, 30%, 0.2)`
-            }}
-          >
-            <motion.div
-              className="flex whitespace-nowrap items-center"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
-            >
-              {Array(4).fill("Decentralized Rails ✺ Secure Smart Contracts ✺ Protocol Engineering ✺ Institutional Liquidity ✺ Stablecoin Settlement ✺ ").map((text, i) => (
-                <span key={i} className="text-2xl md:text-4xl font-bold tracking-wide pr-4 uppercase italic">
-                  {text}
-                </span>
-              ))}
-            </motion.div>
-          </div>
-        </div>
       </ThemeSection>
+
+      {/* Criss-Cross Marquees (Standard Branding) */}
+      <section className="relative h-64 bg-main overflow-hidden flex flex-col items-center justify-center">
+        <div className="absolute w-[110%] bg-sec text-main py-4 transform -rotate-3 z-10 flex whitespace-nowrap overflow-hidden shadow-xl">
+          <motion.div 
+            animate={{ x: ["-50%", "0%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+            className="flex whitespace-nowrap text-2xl md:text-4xl font-bold uppercase tracking-wider"
+          >
+            {Array(4).fill("Driven by Passion, Built with Code ✺ Custom Web Experiences ✺ Ecosystem Thinking ✺ ").map((t, i) => (
+              <span key={i} className="pr-4">{t}</span>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="absolute w-[110%] bg-main text-sec border-y-2 border-sec py-4 transform rotate-3 flex whitespace-nowrap overflow-hidden">
+          <motion.div 
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+            className="flex whitespace-nowrap text-2xl md:text-4xl font-bold uppercase tracking-wider"
+          >
+             {Array(4).fill("Driven by Passion, Built with Code ✺ Custom Web Experiences ✺ Ecosystem Thinking ✺ ").map((t, i) => (
+              <span key={i} className="pr-4">{t}</span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
     </main>
   );

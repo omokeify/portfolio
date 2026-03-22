@@ -20,31 +20,33 @@ export default function MusicPlayer() {
   const web3Music = "https://cdn.pixabay.com/audio/2026/02/20/audio_91db1f3017.mp3";
 
   useEffect(() => {
-    // Attempt to autoplay on first interaction
+    // Attempt to autoplay on ANY user interaction
     const startAutoplay = () => {
-      if (audioRef.current && !isPlaying) {
+      if (audioRef.current && audioRef.current.paused) {
         audioRef.current.play().then(() => {
           setIsPlaying(true);
+          console.log("Music session started by interaction");
         }).catch(err => {
-          console.warn("Autoplay blocked/waiting for more interaction", err);
+          console.warn("Playback blocked by browser policy even after interaction:", err);
         });
       }
-      // Remove listeners after first interaction
-      window.removeEventListener('click', startAutoplay);
-      window.removeEventListener('touchstart', startAutoplay);
+      // Cleanup listeners immediately to prevent multiple triggers
+      window.removeEventListener('pointerdown', startAutoplay);
       window.removeEventListener('keydown', startAutoplay);
     };
 
-    window.addEventListener('click', startAutoplay);
+    window.addEventListener('pointerdown', startAutoplay);
     window.addEventListener('touchstart', startAutoplay);
+    window.addEventListener('click', startAutoplay);
     window.addEventListener('keydown', startAutoplay);
 
     return () => {
-      window.removeEventListener('click', startAutoplay);
+      window.removeEventListener('pointerdown', startAutoplay);
       window.removeEventListener('touchstart', startAutoplay);
+      window.removeEventListener('click', startAutoplay);
       window.removeEventListener('keydown', startAutoplay);
     };
-  }, [isPlaying]);
+  }, []);
 
   useEffect(() => {
     const handleDuck = () => {
