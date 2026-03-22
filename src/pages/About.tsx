@@ -130,7 +130,7 @@ export default function About() {
       </ThemeSection>
 
       {/* Stats Section */}
-      <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="w-full pt-16 pb-32 px-6 md:px-12 lg:px-24">
+      <ThemeSection mainColor="#d4f534" secColor="#1e1e1e" className="w-full pt-16 pb-32 px-6 md:px-12 lg:px-24">
         <div className="w-full">
           <div className="text-center mb-16">
             <RevealLine>
@@ -168,14 +168,14 @@ export default function About() {
               }
             ].map((stat, index) => (
               <FadeIn key={index} delay={0.3 + index * 0.1} className="h-full">
-                <div className="bg-black text-white p-8 md:p-10 rounded-2xl h-full flex flex-col">
+                <div className="bg-sec text-main p-8 md:p-10 rounded-2xl h-full flex flex-col">
                   <div className="text-6xl md:text-7xl font-bold tracking-tighter mb-6">
                     {stat.number}
                   </div>
                   <div className="text-lg md:text-xl font-bold mb-4">
                     {stat.label}
                   </div>
-                  <div className="text-sm text-white/60 leading-relaxed">
+                  <div className="text-sm text-main/60 leading-relaxed">
                     {stat.description}
                   </div>
                 </div>

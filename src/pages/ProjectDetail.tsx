@@ -55,7 +55,13 @@ export default function ProjectDetail() {
       year: "2024",
       role: "Full-Stack Developer & AI Integrator",
       heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000&auto=format&fit=crop",
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
       description: "An AI-powered SaaS platform that enables businesses to deploy intelligent chat assistants capable of contextual reasoning, document understanding, and real-time user engagement. Built with a high-performance Go backend and a modern React frontend, the platform combines advanced AI integration with a clean, responsive UI.",
+      challenge: "Businesses struggle with customer support efficiency and document retrieval. Existing solutions are either too rigid or lack contextual understanding of company-specific data.",
+      theIdea: "Create an intelligent, customizable AI assistant that can ingest company documents and provide accurate, context-aware responses to users in real-time.",
+      systemDesign: "A microservices architecture with a Go backend for high-concurrency API handling, a React frontend for the dashboard, and a RAG pipeline using vector databases for contextual AI reasoning.",
+      engineeringScope: "End-to-end development including database design, API architecture, AI integration (OpenAI, LangChain), frontend dashboard development, and CI/CD deployment.",
+      businessOutcome: "Reduced support ticket volume by 40% and improved response times, leading to higher customer satisfaction and lower operational costs.",
       techStack: ["Go (Golang)", "React", "Next.js", "RAG (Retrieval-Augmented Generation)"],
       liveLink: "#",
       responsibilities: [
@@ -89,6 +95,11 @@ export default function ProjectDetail() {
       role: "Frontend Developer",
       heroImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
       description: "A comprehensive business management suite designed to help enterprises scale their operations efficiently. It features a robust dashboard, real-time analytics, and seamless integrations with popular third-party tools.",
+      challenge: "Managing multiple business operations across different platforms leads to data silos and inefficiencies.",
+      theIdea: "Develop a unified dashboard that consolidates analytics, operations, and third-party integrations into a single source of truth.",
+      systemDesign: "A React-based frontend communicating with a Node.js backend via REST and WebSockets for real-time data updates.",
+      engineeringScope: "Frontend architecture, state management, real-time data visualization, and responsive UI implementation.",
+      businessOutcome: "Increased operational efficiency by 30% and reduced employee onboarding time significantly.",
       techStack: ["React", "TypeScript", "Tailwind CSS", "Node.js"],
       liveLink: "#",
       responsibilities: [
@@ -110,6 +121,11 @@ export default function ProjectDetail() {
       role: "Web Developer",
       heroImage: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2000&auto=format&fit=crop",
       description: "A sleek, high-performance e-commerce platform for premium audio plugins. The platform offers a seamless shopping experience, secure checkout, and instant digital downloads.",
+      challenge: "The existing platform was slow and struggled to handle high traffic during major sales events, leading to lost revenue.",
+      theIdea: "Rebuild the platform using modern web technologies to ensure lightning-fast performance and high availability.",
+      systemDesign: "A statically generated Next.js frontend coupled with Stripe for payments and a custom secure download delivery system.",
+      engineeringScope: "Frontend development, payment gateway integration, and secure file delivery implementation.",
+      businessOutcome: "Boosted conversion rates by 15% and achieved 99.9% uptime during peak sales periods.",
       techStack: ["Next.js", "Stripe", "Tailwind CSS"],
       liveLink: "#",
       responsibilities: [
@@ -131,6 +147,11 @@ export default function ProjectDetail() {
       role: "Creative Developer",
       heroImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2000&auto=format&fit=crop",
       description: "An interactive, WebGL-powered portfolio showcasing creative development skills. Features smooth scrolling, custom shaders, and dynamic page transitions.",
+      challenge: "Standing out in a crowded market of developers requires a unique and memorable digital presence.",
+      theIdea: "Build a portfolio that acts as a technical demonstration of advanced WebGL and creative coding skills.",
+      systemDesign: "A React application utilizing React Three Fiber for 3D rendering and Framer Motion for complex DOM animations.",
+      engineeringScope: "Creative direction, 3D scene optimization, custom shader development, and responsive layout design.",
+      businessOutcome: "Received multiple design awards and increased freelance inquiries by 200%.",
       techStack: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
       liveLink: "#",
       responsibilities: [
@@ -159,11 +180,11 @@ export default function ProjectDetail() {
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-24">
             <div className="lg:w-2/3">
-              <RevealLine>
-                <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter text-sec leading-none">
+              <FadeIn>
+                <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter text-black leading-none">
                   {project.title}
                 </h1>
-              </RevealLine>
+              </FadeIn>
             </div>
             <div className="lg:w-1/3 text-left lg:text-right">
               <FadeIn delay={0.2}>
@@ -176,16 +197,6 @@ export default function ProjectDetail() {
               </FadeIn>
             </div>
           </div>
-
-          <FadeIn delay={0.4}>
-            <button 
-              onClick={() => exploreRef.current?.scrollIntoView({ behavior: 'smooth' })}
-              className="flex items-center gap-2 text-sec/80 text-sm font-medium hover:text-sec transition-colors cursor-pointer"
-            >
-              <ArrowDown className="w-4 h-4" />
-              <span>Scroll to Explore</span>
-            </button>
-          </FadeIn>
         </div>
       </ThemeSection>
 
@@ -201,127 +212,173 @@ export default function ProjectDetail() {
         </div>
       </ThemeSection>
 
-      {/* Section 2: Details (Dark Theme) */}
-      <ThemeSection mainColor="#1e1e1e" secColor="#e7e7e7" className="w-full">
-        <div className="w-full border-t border-sec/20 py-16 px-6 md:px-12 lg:px-24">
-          <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24">
-            
-            {/* Left Side: Description & Buttons */}
-            <div className="lg:w-1/2 flex flex-col items-start">
-              <FadeIn>
-                <p className="text-base md:text-lg leading-relaxed mb-12 text-sec/90 max-w-2xl">
-                  {project.description}
-                </p>
-              </FadeIn>
-              
-              <FadeIn delay={0.2}>
-                <div className="flex items-center gap-3">
-                  <a 
-                    href={project.liveLink} 
-                    className="bg-[#d4f534] text-[#1e1e1e] px-8 py-3.5 rounded-full font-bold tracking-wide hover:scale-105 transition-transform duration-300"
-                  >
-                    Live Website
-                  </a>
-                  <a 
-                    href={project.liveLink} 
-                    className="bg-[#d4f534] text-[#1e1e1e] p-3.5 rounded-full flex items-center justify-center hover:scale-105 transition-transform duration-300"
-                  >
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
-                </div>
-              </FadeIn>
-            </div>
-
-            {/* Right Side: Client & Tech Stack */}
-            <div className="lg:w-5/12 flex flex-col gap-10">
-              <FadeIn delay={0.3}>
-                <div>
-                  <h4 className="font-bold text-lg mb-2 text-sec">Client</h4>
-                  <p className="text-sec/70">{project.client}</p>
-                </div>
-              </FadeIn>
-              
-              <FadeIn delay={0.4}>
-                <div className="flex flex-wrap gap-3">
-                  {project.techStack.map((tech, index) => (
-                    <span 
-                      key={index} 
-                      className="bg-sec text-main px-5 py-2 rounded-full text-sm font-semibold tracking-wide"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </FadeIn>
-            </div>
-
-          </div>
-        </div>
-      </ThemeSection>
-
-      {/* Section 3: My Role & Impact (Light Theme) */}
-      <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="py-32 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
-          {/* Left Column */}
-          <div className="lg:col-span-4">
+      {/* Section 1.5: Video Demo */}
+      {project.videoUrl && (
+        <ThemeSection mainColor="#1e1e1e" secColor="#e7e7e7" className="w-full py-16 md:py-24 px-6 md:px-12 lg:px-24">
+          <div className="max-w-7xl mx-auto">
             <RevealLine>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4 text-sec">
-                My Role
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-12 text-sec">
+                Project Demo
               </h2>
             </RevealLine>
             <FadeIn delay={0.2}>
-              <p className="text-sec/60 font-medium">
-                My contributions and responsibilities in this project
-              </p>
+              <div className="w-full aspect-video rounded-2xl overflow-hidden bg-black/20 relative group border border-sec/10">
+                <video 
+                  src={project.videoUrl} 
+                  controls 
+                  className="w-full h-full object-cover"
+                  poster={project.heroImage}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </FadeIn>
           </div>
+        </ThemeSection>
+      )}
 
-          {/* Right Column */}
-          <div className="lg:col-span-8">
-            <FadeIn delay={0.3}>
-              <p className="text-lg md:text-xl font-medium mb-12 text-sec">
-                {project.role}
-              </p>
-            </FadeIn>
+      {/* New Combined Section: Challenge, Details, System Design, Scope */}
+      <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#d4f534]/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
-            <div className="mb-12">
+        <div className="max-w-7xl mx-auto">
+          {/* Top Row: Challenge & Details */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-32 relative z-10">
+            {/* Left: Challenge */}
+            <div className="lg:col-span-5 flex flex-col items-start">
               <RevealLine>
-                <h3 className="text-xl md:text-2xl font-bold mb-6 text-sec">
-                  Key Responsibilities
-                </h3>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6 text-sec">
+                  The Challenge
+                </h2>
               </RevealLine>
-              <ul className="space-y-3">
-                {project.responsibilities.map((resp, index) => (
-                  <FadeIn key={index} delay={0.4 + index * 0.05}>
-                    <li className="flex gap-3 text-sec/80 text-sm md:text-base">
-                      <span>•</span>
-                      <span>{resp}</span>
-                    </li>
-                  </FadeIn>
-                ))}
-              </ul>
+              <FadeIn delay={0.2}>
+                <p className="text-sec/80 text-base md:text-lg leading-relaxed mb-10">
+                  {project.challenge || project.description}
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <div className="flex flex-wrap items-center gap-4">
+                  <a 
+                    href={project.liveLink} 
+                    className="bg-[#d4f534] text-[#1e1e1e] px-8 py-3.5 rounded-full text-sm font-bold tracking-wide hover:scale-105 transition-transform duration-300 uppercase"
+                  >
+                    View Projects
+                  </a>
+                  <a 
+                    href={project.liveLink} 
+                    className="bg-[#1e1e1e] text-[#e7e7e7] px-8 py-3.5 rounded-full text-sm font-bold tracking-wide hover:scale-105 transition-transform duration-300 uppercase"
+                  >
+                    Try Demo
+                  </a>
+                </div>
+              </FadeIn>
             </div>
 
-            <div>
-              <RevealLine>
-                <h3 className="text-xl md:text-2xl font-bold mb-6 text-sec">
-                  Project Impact
-                </h3>
-              </RevealLine>
-              <ul className="space-y-3">
-                {project.impact.map((imp, index) => (
-                  <FadeIn key={index} delay={0.4 + index * 0.05}>
-                    <li className="flex gap-3 text-sec/80 text-sm md:text-base">
-                      <span>•</span>
-                      <span>{imp}</span>
-                    </li>
-                  </FadeIn>
-                ))}
-              </ul>
+            {/* Right: Details Card */}
+            <div className="lg:col-span-6 lg:col-start-7">
+              <FadeIn delay={0.4}>
+                <div className="bg-black/5 rounded-2xl p-8 md:p-12 mb-8">
+                  <h4 className="text-[10px] uppercase tracking-[0.2em] text-sec/40 font-bold mb-8">DETAILS</h4>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider text-sec/40 font-bold mb-1">CLIENT</p>
+                      <p className="font-medium text-sec">{project.client}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider text-sec/40 font-bold mb-1">ROLE</p>
+                      <p className="font-medium text-sec">{project.role}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider text-sec/40 font-bold mb-1">YEAR</p>
+                      <p className="font-medium text-sec">{project.year}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-[10px] uppercase tracking-[0.2em] text-sec/40 font-bold mb-4 ml-2">TECH ARCHITECTURE</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {project.techStack.map((tech, index) => (
+                      <span 
+                        key={index} 
+                        className="border border-sec/20 text-sec px-5 py-2 rounded-full text-xs font-semibold tracking-wide uppercase"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
             </div>
           </div>
 
+          {/* Bottom Row: System Design & Scope */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
+            {/* Left: System Design */}
+            <div className="lg:col-span-5">
+              <RevealLine>
+                <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-sec leading-[1.1]">
+                  System<br/>Design
+                </h2>
+              </RevealLine>
+              <FadeIn delay={0.2}>
+                <p className="text-sec/60 text-lg">
+                  {project.systemDesign || "How I engineered the solution from concept to production."}
+                </p>
+              </FadeIn>
+            </div>
+
+            {/* Right: Scope & Outcome */}
+            <div className="lg:col-span-6 lg:col-start-7 flex flex-col gap-16">
+              {/* Engineering Scope */}
+              <div>
+                <RevealLine>
+                  <h3 className="text-2xl font-bold mb-6 text-sec pb-4 border-b border-sec/10">
+                    Engineering Scope
+                  </h3>
+                </RevealLine>
+                <ul className="space-y-4">
+                  {project.responsibilities.map((resp, index) => (
+                    <FadeIn key={index} delay={0.3 + index * 0.05}>
+                      <li className="flex items-start gap-4 text-sec/80 text-sm md:text-base">
+                        <div className="mt-1 shrink-0 text-[#d4f534]">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L14.4 7.6L20.5 8.5L16.1 12.9L17.1 19L12 16.3L6.9 19L7.9 12.9L3.5 8.5L9.6 7.6L12 2Z" />
+                          </svg>
+                        </div>
+                        <span className="leading-relaxed">{resp}</span>
+                      </li>
+                    </FadeIn>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Business Outcome */}
+              <div>
+                <RevealLine>
+                  <h3 className="text-2xl font-bold mb-6 text-sec pb-4 border-b border-sec/10">
+                    Business Outcome
+                  </h3>
+                </RevealLine>
+                <ul className="space-y-4">
+                  {project.impact.map((imp, index) => (
+                    <FadeIn key={index} delay={0.4 + index * 0.05}>
+                      <li className="flex items-start gap-4 text-sec/80 text-sm md:text-base">
+                        <div className="mt-1 shrink-0 text-[#d4f534]">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                        </div>
+                        <span className="leading-relaxed">{imp}</span>
+                      </li>
+                    </FadeIn>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </ThemeSection>
 
