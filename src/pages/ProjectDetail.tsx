@@ -560,10 +560,14 @@ export default function ProjectDetail() {
       <AnimatePresence>
         {project.videoUrl && !isVideoInView && !isDismissed && (
           <motion.div
+            drag
+            dragMomentum={false}
+            dragElastic={0.1}
+            whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 50, scale: 0.8 }}
-            className="fixed bottom-8 right-8 w-72 md:w-96 aspect-video bg-black rounded-xl overflow-hidden shadow-2xl z-[100] border border-sec/20"
+            exit={{ opacity: 0, scale: 0.5 }}
+            className="fixed bottom-8 right-8 w-72 md:w-96 aspect-video bg-black rounded-xl overflow-hidden shadow-2xl z-[100] border border-sec/20 cursor-grab active:cursor-grabbing touch-none"
           >
             <button 
               onClick={() => {
