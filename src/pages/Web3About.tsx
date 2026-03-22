@@ -1,4 +1,4 @@
-import { useEffect, useRef, ReactNode } from "react";
+import { useState, useEffect, useRef, ReactNode } from "react";
 import { useInView, motion } from "motion/react";
 import { RevealLine, FadeIn } from "../components/Animations";
 import MagneticButton from "../components/MagneticButton";
@@ -32,6 +32,17 @@ function ThemeSection({ mainColor, secColor, children, className = "" }: ThemeSe
 }
 
 export default function Web3About() {
+  const [hue, setHue] = useState(180); // Web3 themed initial hue
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const newHue = (180 + window.scrollY * 0.05) % 360;
+      setHue(newHue);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Reset theme on unmount
   useEffect(() => {
     return () => {
@@ -251,11 +262,17 @@ export default function Web3About() {
         </div>
       </ThemeSection>
 
-      {/* CTA Section & Marquees (Consistent Branding) */}
+      {/* CTA Section & Marquees (Consistent Branding with Hue Scroll) */}
       <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="w-full pt-32 pb-0 overflow-hidden">
         <div className="w-full px-6 md:px-12 lg:px-24 mb-10">
           <FadeIn>
-            <div className="bg-sec text-main py-16 px-8 md:py-20 md:px-16 rounded-3xl text-center max-w-6xl mx-auto">
+            <div 
+              className="py-16 px-8 md:py-20 md:px-16 rounded-3xl text-center max-w-6xl mx-auto transition-colors duration-500"
+              style={{ 
+                backgroundColor: `hsla(${hue}, 40%, 10%, 1)`, // Deep tinted background
+                color: '#e7e7e7' // Light text
+              }}
+            >
               <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6 uppercase">
                 Ready to Architect the Future?
               </h2>
@@ -266,9 +283,12 @@ export default function Web3About() {
           </FadeIn>
         </div>
 
-        {/* Criss-Cross Marquees */}
+        {/* Criss-Cross Marquees with Tinted Background */}
         <div className="relative w-full h-[40vh] md:h-[50vh] flex items-center justify-center mt-10">
-          <div className="absolute w-[110%] bg-[#1e1e1e] text-[#e7e7e7] py-4 md:py-6 transform -rotate-3 z-0 flex overflow-hidden">
+          <div 
+            className="absolute w-[110%] py-4 md:py-6 transform -rotate-3 z-0 flex overflow-hidden transition-colors duration-500"
+            style={{ backgroundColor: `hsla(${hue}, 40%, 12%, 1)`, color: '#e7e7e7' }}
+          >
             <motion.div
               className="flex whitespace-nowrap items-center"
               animate={{ x: ["-50%", "0%"] }}
@@ -282,7 +302,14 @@ export default function Web3About() {
             </motion.div>
           </div>
 
-          <div className="absolute w-[110%] bg-[#1e1e1e] text-[#e7e7e7] py-4 md:py-6 transform rotate-3 z-10 flex overflow-hidden shadow-2xl border-y border-white/10">
+          <div 
+            className="absolute w-[110%] py-4 md:py-6 transform rotate-3 z-10 flex overflow-hidden shadow-2xl border-y transition-colors duration-500"
+            style={{ 
+              backgroundColor: `hsla(${hue}, 40%, 8%, 1)`, 
+              color: '#e7e7e7',
+              borderColor: `hsla(${hue}, 60%, 30%, 0.2)`
+            }}
+          >
             <motion.div
               className="flex whitespace-nowrap items-center"
               animate={{ x: ["0%", "-50%"] }}

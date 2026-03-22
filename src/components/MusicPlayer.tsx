@@ -16,9 +16,35 @@ export default function MusicPlayer() {
   
   const isWeb3 = isWeb3Path || isWeb3Project;
 
-  // Verified working links from Pixabay
   const web2Music = "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3";
   const web3Music = "https://cdn.pixabay.com/audio/2026/02/20/audio_91db1f3017.mp3";
+
+  useEffect(() => {
+    // Attempt to autoplay on first interaction
+    const startAutoplay = () => {
+      if (audioRef.current && !isPlaying) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        }).catch(err => {
+          console.warn("Autoplay blocked/waiting for more interaction", err);
+        });
+      }
+      // Remove listeners after first interaction
+      window.removeEventListener('click', startAutoplay);
+      window.removeEventListener('touchstart', startAutoplay);
+      window.removeEventListener('keydown', startAutoplay);
+    };
+
+    window.addEventListener('click', startAutoplay);
+    window.addEventListener('touchstart', startAutoplay);
+    window.addEventListener('keydown', startAutoplay);
+
+    return () => {
+      window.removeEventListener('click', startAutoplay);
+      window.removeEventListener('touchstart', startAutoplay);
+      window.removeEventListener('keydown', startAutoplay);
+    };
+  }, [isPlaying]);
 
   useEffect(() => {
     const handleDuck = () => {
