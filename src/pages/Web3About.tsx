@@ -1,6 +1,7 @@
 import { useEffect, useRef, ReactNode } from "react";
 import { useInView, motion } from "motion/react";
 import { RevealLine, FadeIn } from "../components/Animations";
+import MagneticButton from "../components/MagneticButton";
 import { ArrowUpRight } from "lucide-react";
 
 interface ThemeSectionProps {
@@ -45,17 +46,17 @@ export default function Web3About() {
     <main className="min-h-screen transition-colors duration-700 overflow-hidden">
       
       {/* Intro Section */}
-      <ThemeSection mainColor="#0a0a0a" secColor="#e7e7e7" className="w-full pt-40 pb-20 px-6 md:px-12 lg:px-24">
+      <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="w-full pt-40 pb-20 px-6 md:px-12 lg:px-24">
         <div className="w-full flex flex-col md:flex-row gap-8 justify-between relative">
           <div className="pt-12 pb-7">
             <RevealLine>
-              <h1 className="text-5xl md:text-6xl lg:text-9xl font-bold tracking-tighter leading-[0.8] text-sec mb-12 uppercase">
-                Web3 <br /> <span className="opacity-20 italic">Architect</span>
+              <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold tracking-tighter leading-tight text-sec mb-8">
+                Web3 Architect
               </h1>
             </RevealLine>
             <FadeIn delay={0.2}>
-              <p className="text-lg lg:text-xl xl:text-3xl leading-relaxed max-w-full lg:max-w-4xl xl:max-w-5xl text-sec/80 font-medium">
-                I build the invisible rails of the decentralized economy. My focus is on creating production-ready Web3 infrastructure—from offline crypto payment gateways like HaraPay to complex liquidity engines like Arcle. I specialize in bridging the gap between blockchain complexity and the seamless user experiences businesses expect.
+              <p className="text-lg lg:text-xl xl:text-2xl leading-relaxed max-w-full lg:max-w-4xl xl:max-w-5xl text-sec/80 font-medium">
+                I build the invisible rails of the decentralized economy. Most of my work sits at the intersection of Blockchain infrastructure, Payment Orchestration, and Crypto-to-Fiat bridging. I specialization in translating complex protocol logic into polished, production-ready products—whether that's a USSD-based crypto payment gateway like HaraPay or high-security liquidity rails like Arcle. I focus heavily on institutional-grade security and meaningful real-world adoption.
               </p>
             </FadeIn>
           </div>
@@ -65,40 +66,39 @@ export default function Web3About() {
       {/* Detailed Text & Image Section */}
       <ThemeSection mainColor="#1e1e1e" secColor="#e7e7e7" className="w-full py-32 px-6 md:px-12 lg:px-24">
         <div className="w-full flex flex-col md:flex-row gap-16 items-center">
-          <div className="w-full md:w-1/2 flex flex-col gap-8 text-lg md:text-2xl text-sec/80 leading-relaxed justify-center font-medium">
+          <div className="w-full md:w-1/2 flex flex-col gap-8 text-lg md:text-xl text-sec/80 leading-relaxed justify-center">
             <FadeIn delay={0.3}>
               <p>
-                As a technical architect in the Web3 space, I don't just write smart contracts—I build entire ecosystems. My work on **HaraPay** enabled crypto transactions for the unbanked via USSD technology, proving that blockchain can solve real-world problems in emerging markets.
+                As a technical architect in the Web3 space, I prioritize the 'Bridge'—the critical infrastructure that connects traditional finance with decentralized protocols. My work on HaraPay enabled crypto transactions for the unbanked via secure USSD technology, proving that blockchain can solve foundational accessibility issues.
               </p>
             </FadeIn>
             <FadeIn delay={0.4}>
               <p>
-                Through **Arcle**, I architected the liquidity and payment rails that allow businesses to interact with crypto as easily as they do with fiat. I specialize in stablecoin settlement, cross-chain orchestration, and high-security infrastructure that meets enterprise standards.
+                My approach combines cryptographic security with exceptional user UX—specializing in stablecoin settlement, cross-chain orchestration, and high-performance middleware. I've worked across diverse protocols from Hedera to Ethereum, consistently delivering production-ready infrastructure that scales for enterprise demand.
               </p>
             </FadeIn>
             <FadeIn delay={0.5}>
               <p>
-                My philosophy is simple: technology should be powerful but invisible. Whether it's Hedera SDK integrations or optimizing gas for high-frequency transactions, I ensure the underlying complexity never compromises the end-user experience.
+                What sets me apart is my ability to manage the entire Web3 stack: from writing optimized Smart Contracts to building the off-chain liquidity engines and front-end dApps that interact with them. I don't just handle transactions—I architect the systems that drive measurable global adoption.
               </p>
             </FadeIn>
           </div>
-          <div className="relative overflow-hidden h-[60vh] md:h-[80vh] w-full md:w-1/2 rounded-[3rem] border border-sec/10 shadow-3xl bg-black">
-            <FadeIn delay={0.6} className="w-full h-full opacity-60">
+          <div className="relative overflow-hidden h-[60vh] md:h-[80vh] w-full md:w-1/2 rounded-2xl">
+            <FadeIn delay={0.6} className="w-full h-full">
               <img 
                 src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2000&auto=format&fit=crop" 
                 alt="Web3 Architecture" 
-                className="w-full h-full object-cover transition-all duration-1000 hover:scale-110"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105"
                 referrerPolicy="no-referrer"
               />
             </FadeIn>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
           </div>
         </div>
       </ThemeSection>
 
       {/* Web3 Specific Skills */}
-      <ThemeSection mainColor="#0a0a0a" secColor="#e7e7e7" className="w-full pt-32 pb-16 px-6 md:px-12 lg:px-24">
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+      <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="w-full pt-32 pb-16 px-6 md:px-12 lg:px-24">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {[
             {
               skill: "Payment Orchestration",
@@ -113,15 +113,15 @@ export default function Web3About() {
               p: "Deep technical experience with Hedera, Ethereum, and Polygon. I build robust SDK wrappers and middleware that allow legacy enterprises to communicate with distributed ledgers without rebuilding their entire stack from scratch."
             }
           ].map((item, index) => (
-            <FadeIn key={index} delay={0.2 + index * 0.1} className="flex flex-col group">
-              <div className="flex flex-col gap-6 mb-8">
-                <span className="text-thr font-bold tracking-widest text-xs">0{index + 1} // ARCHITECTURE</span>
-                <div className="w-full h-[1px] bg-sec/10 group-hover:bg-thr/50 transition-colors"></div>
+            <FadeIn key={index} delay={0.2 + index * 0.1} className="flex flex-col">
+              <div className="flex flex-col gap-4 mb-6">
+                <span className="text-sec/50 text-sm">0{index + 1}</span>
+                <div className="w-full h-[1px] bg-sec/20"></div>
               </div>
-              <h3 className="text-3xl font-bold tracking-tight text-sec mb-6 uppercase">
+              <h3 className="text-2xl font-bold tracking-tight text-sec mb-4 uppercase">
                 {item.skill}
               </h3>
-              <p className="text-lg text-sec/50 leading-relaxed font-medium">
+              <p className="text-base text-sec/60 leading-relaxed font-medium">
                 {item.p}
               </p>
             </FadeIn>
@@ -130,46 +130,169 @@ export default function Web3About() {
       </ThemeSection>
 
       {/* Impact Section */}
-      <ThemeSection mainColor="#d4f534" secColor="#1e1e1e" className="w-full pt-20 pb-40 px-6 md:px-12 lg:px-24">
-        <div className="w-full text-center">
-           <RevealLine>
-              <h2 className="text-7xl md:text-[10vw] font-bold tracking-tighter uppercase mb-20 leading-none">
-                 Moving Value <br /> <span className="opacity-30">Globally</span>
+      <ThemeSection mainColor="#d4f534" secColor="#1e1e1e" className="w-full pt-16 pb-32 px-6 md:px-12 lg:px-24">
+        <div className="w-full">
+          <div className="text-center mb-16">
+            <RevealLine>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-sec mb-4">
+                Web3 Impact
               </h2>
-           </RevealLine>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-sec text-main p-12 rounded-[2.5rem] flex flex-col justify-between h-[400px]">
-                 <span className="text-xs font-bold tracking-widest uppercase opacity-40">Adoption</span>
-                 <h3 className="text-6xl font-bold tracking-tighter italic">Offline Crypto</h3>
-                 <p className="text-main/60 leading-relaxed">Pioneered USSD-based crypto payments for zero-data environments via HaraPay.</p>
-              </div>
-              <div className="bg-sec text-main p-12 rounded-[2.5rem] flex flex-col justify-between h-[400px]">
-                 <span className="text-xs font-bold tracking-widest uppercase opacity-40">Engineering</span>
-                 <h3 className="text-6xl font-bold tracking-tighter italic">Liquidity Rails</h3>
-                 <p className="text-main/60 leading-relaxed">Built the middleware that allows seamless fiat-to-crypto bridging for businesses.</p>
-              </div>
-              <div className="bg-sec text-main p-12 rounded-[2.5rem] flex flex-col justify-between h-[400px]">
-                 <span className="text-xs font-bold tracking-widest uppercase opacity-40">Future</span>
-                 <h3 className="text-6xl font-bold tracking-tighter italic">Stable Settlement</h3>
-                 <p className="text-main/60 leading-relaxed">Optimizing cross-border transactions using the security of Hedera and Ethereum.</p>
-              </div>
-           </div>
+            </RevealLine>
+            <FadeIn delay={0.2}>
+              <p className="text-lg md:text-xl text-sec/60 max-w-3xl mx-auto">
+                Proven results in moving value and scaling decentralized adoption
+              </p>
+            </FadeIn>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                number: "100%",
+                label: "Offline Reach",
+                description: "Developed USSD crypto gateways for the unbanked via HaraPay infrastructure"
+              },
+              {
+                number: "0.2s",
+                label: "Settlement Speed",
+                description: "Optimized payment rails for near-instant stablecoin clearing on Hedera"
+              },
+              {
+                number: "5+",
+                label: "Chain Integrations",
+                description: "Cross-chain liquidity bridge architecture across Ethereum, Polygon, and more"
+              },
+              {
+                number: "Secure",
+                label: "Institutional Grade",
+                description: "Multi-sig and HSM-backed infrastructure for enterprise crypto custody"
+              }
+            ].map((stat, index) => (
+              <FadeIn key={index} delay={0.3 + index * 0.1} className="h-full">
+                <div className="bg-sec text-main p-8 md:p-10 rounded-2xl h-full flex flex-col">
+                  <div className="text-6xl md:text-7xl font-bold tracking-tighter mb-6">
+                    {stat.number}
+                  </div>
+                  <div className="text-lg md:text-xl font-bold mb-4 uppercase tracking-tighter">
+                    {stat.label}
+                  </div>
+                  <div className="text-sm text-main/60 leading-relaxed">
+                    {stat.description}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </ThemeSection>
 
-      {/* Bottom Navigation */}
-      <footer className="w-full py-32 bg-sec text-main flex flex-center text-center justify-center items-center">
-         <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-12 uppercase">
-               Interested in my <br /> <span className="opacity-40">System Design?</span>
-            </h2>
-            <div className="flex flex-col md:flex-row gap-6 justify-center">
-               <a href="https://wa.me/2347039662696" className="bg-main text-sec px-12 py-6 rounded-full font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform">
-                  Contact Architect
-               </a>
+      {/* Tech Arsenal Section (Synced with Web2 but context focused) */}
+      <ThemeSection mainColor="#1e1e1e" secColor="#e7e7e7" className="w-full py-32 px-6 md:px-12 lg:px-24">
+        <div className="w-full">
+          <div className="text-center mb-16">
+            <RevealLine>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter text-sec mb-4">
+                Decentralized Arsenal
+              </h2>
+            </RevealLine>
+            <FadeIn delay={0.2}>
+              <p className="text-lg md:text-xl text-sec/70 max-w-3xl mx-auto">
+                Enterprise tools for the next generation of finance
+              </p>
+            </FadeIn>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {[
+              {
+                category: "Solidity & Smart Contracts",
+                techs: ["Solidity", "Hardhat", "Foundry", "OpenZeppelin", "Slither", "EVM"]
+              },
+              {
+                category: "Web3 SDKs & Tooling",
+                techs: ["Web3.js", "Ethers.js", "Viem", "Wagmi", "Alchemy", "Infura", "The Graph"]
+              },
+              {
+                category: "Infrastructure & Protocols",
+                techs: ["Hedera SDK", "IPFS", "Arweave", "Chainlink", "Uniswap V3 SDK"]
+              },
+              {
+                category: "Security & Custody",
+                techs: ["Gnosis Safe", "Fireblocks API", "ECDSA", "Multi-Sig Architecture"]
+              },
+              {
+                category: "Backend Rails",
+                techs: ["Node.js", "NestJS", "PostgreSQL", "BullMQ", "Redis", "WebSockets"]
+              },
+              {
+                category: "Automation & CI/CD",
+                techs: ["Docker", "Github Actions", "Tenderly", "Moralis Streams"]
+              }
+            ].map((category, index) => (
+              <FadeIn key={index} delay={0.3 + index * 0.1} className="flex flex-col">
+                <h3 className="text-2xl font-bold tracking-tight mb-6 text-sec uppercase tracking-tighter">
+                  {category.category}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {category.techs.map((tech, i) => (
+                    <span 
+                      key={i} 
+                      className="px-4 py-2 bg-sec/10 text-sec rounded-full text-sm font-medium hover:bg-sec hover:text-main transition-colors duration-300 cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </ThemeSection>
+
+      {/* CTA Section & Marquees (Consistent Branding) */}
+      <ThemeSection mainColor="#e7e7e7" secColor="#1e1e1e" className="w-full pt-32 pb-0 overflow-hidden">
+        <div className="w-full px-6 md:px-12 lg:px-24 mb-10">
+          <FadeIn>
+            <div className="bg-sec text-main py-16 px-8 md:py-20 md:px-16 rounded-3xl text-center max-w-6xl mx-auto">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6 uppercase">
+                Ready to Architect the Future?
+              </h2>
+              <p className="text-base md:text-lg text-main/70 max-w-3xl mx-auto leading-relaxed">
+                Whether you're building a decentralized payment gateway, institutional liquidity rails, or complex protocol integrations, I bring the technical depth to turn decentralized theory into production-ready infrastructure.
+              </p>
             </div>
-         </FadeIn>
-      </footer>
+          </FadeIn>
+        </div>
+
+        {/* Criss-Cross Marquees */}
+        <div className="relative w-full h-[40vh] md:h-[50vh] flex items-center justify-center mt-10">
+          <div className="absolute w-[110%] bg-[#1e1e1e] text-[#e7e7e7] py-4 md:py-6 transform -rotate-3 z-0 flex overflow-hidden">
+            <motion.div
+              className="flex whitespace-nowrap items-center"
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+            >
+              {Array(4).fill("Decentralized Rails ✺ Secure Smart Contracts ✺ Protocol Engineering ✺ Institutional Liquidity ✺ Stablecoin Settlement ✺ ").map((text, i) => (
+                <span key={i} className="text-2xl md:text-4xl font-bold tracking-wide pr-4 uppercase italic">
+                  {text}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="absolute w-[110%] bg-[#1e1e1e] text-[#e7e7e7] py-4 md:py-6 transform rotate-3 z-10 flex overflow-hidden shadow-2xl border-y border-white/10">
+            <motion.div
+              className="flex whitespace-nowrap items-center"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+            >
+              {Array(4).fill("Decentralized Rails ✺ Secure Smart Contracts ✺ Protocol Engineering ✺ Institutional Liquidity ✺ Stablecoin Settlement ✺ ").map((text, i) => (
+                <span key={i} className="text-2xl md:text-4xl font-bold tracking-wide pr-4 uppercase italic">
+                  {text}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </ThemeSection>
 
     </main>
   );
