@@ -1,26 +1,36 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { useLocation } from 'react-router-dom';
 import MagneticButton from './MagneticButton';
 
 export default function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const location = useLocation();
+  const isWeb3 = location.pathname.startsWith("/web3");
+
+  const web2Music = "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3";
+  const web3Music = "https://cdn.pixabay.com/download/audio/2022/02/07/audio_671b20ceb0.mp3?filename=just-relax-11157.mp3";
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.3;
       
-      // Attempt to autoplay
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          // Auto-play was prevented by the browser
-          console.log("Autoplay prevented:", error);
-          setIsPlaying(false);
-        });
+      // Force reload the new source
+      audioRef.current.load();
+      
+      // If it was already playing, or we want to attempt autoplay
+      if (isPlaying) {
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.log("Autoplay prevented:", error);
+            setIsPlaying(false);
+          });
+        }
       }
     }
-  }, []);
+  }, [isWeb3]);
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -39,7 +49,7 @@ export default function MusicPlayer() {
         ref={audioRef}
         loop
         autoPlay
-        src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"
+        src={isWeb3 ? web3Music : web2Music}
       />
       <MagneticButton>
         <button

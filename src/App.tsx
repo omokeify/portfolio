@@ -13,12 +13,14 @@ import Preloader from "./components/Preloader";
 import MusicPlayer from "./components/MusicPlayer";
 import BackgroundWave from "./components/BackgroundWave";
 import ScrollToTop from "./components/ScrollToTop";
-import HonorsBadge from "./components/HonorsBadge";
+import Web3Badge from "./components/Web3Badge";
 
 import Home from "./pages/Home";
 import Works from "./pages/Works";
 import About from "./pages/About";
 import ProjectDetail from "./pages/ProjectDetail";
+import Web3Portfolio from "./pages/Web3Portfolio";
+import Web3Works from "./pages/Web3Works";
 
 export default function App() {
   useEffect(() => {
@@ -53,12 +55,14 @@ export default function App() {
         <CustomCursor />
         <Navbar />
         <MusicPlayer />
-        <HonorsBadge />
+        <Web3Badge />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/works" element={<Works />} />
           <Route path="/about" element={<About />} />
           <Route path="/project/:slug" element={<ProjectDetail />} />
+          <Route path="/web3" element={<Web3Portfolio />} />
+          <Route path="/web3-works" element={<Web3Works />} />
         </Routes>
         <Footer />
       </div>

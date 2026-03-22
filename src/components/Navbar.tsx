@@ -1,13 +1,15 @@
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MagneticButton from "./MagneticButton";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
+  const location = useLocation();
+  const isWeb3 = location.pathname.startsWith("/web3");
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100) {
@@ -17,7 +19,12 @@ export default function Navbar() {
     }
   });
 
-  const links = [
+  const links = isWeb3 ? [
+    { name: "Home", href: "/web3" },
+    { name: "About", href: "/about" },
+    { name: "Works", href: "/web3-works" },
+    { name: "Contact", href: "https://wa.me/2347039662696" },
+  ] : [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Works", href: "/works" },
@@ -29,7 +36,7 @@ export default function Navbar() {
       {/* Main Navbar */}
       <nav className={`fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 py-6 text-sec transition-transform duration-500 ${isScrolled ? '-translate-y-full' : 'translate-y-0'}`}>
         <MagneticButton>
-          <Link to="/" className="text-3xl font-bold tracking-tighter inline-flex items-center">
+          <Link to={isWeb3 ? "/web3" : "/"} className="text-3xl font-bold tracking-tighter inline-flex items-center">
             F<span className="w-1 h-6 bg-sec ml-1"></span>
           </Link>
         </MagneticButton>
@@ -50,6 +57,7 @@ export default function Navbar() {
               </div>
             ))}
           </div>
+          
           <MagneticButton>
             <a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className="bg-sec text-main px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 hover:scale-105 transition-transform">
               Contact
