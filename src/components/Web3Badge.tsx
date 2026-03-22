@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -31,7 +31,7 @@ export default function Web3Badge() {
       <a 
         href={isWeb3 ? "/" : "/web3"} 
         onClick={handleClick}
-        className="fixed right-0 top-1/2 -translate-y-1/2 bg-white border border-sec/10 px-2 py-6 flex flex-col items-center gap-4 z-50 hidden lg:flex rounded-l-md shadow-sm hover:bg-gray-100 transition-colors cursor-pointer group"
+        className="fixed right-0 top-1/2 -translate-y-1/2 bg-white border border-sec/10 px-2 py-6 flex flex-col items-center gap-4 z-50 rounded-l-md shadow-sm hover:bg-gray-100 transition-colors cursor-pointer group scale-75 md:scale-100 origin-right"
       >
         <span className="font-bold text-xl text-black group-hover:scale-110 transition-transform">
           {isWeb3 ? "W2" : "W3"}

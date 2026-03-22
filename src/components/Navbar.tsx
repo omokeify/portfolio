@@ -23,7 +23,7 @@ export default function Navbar() {
 
   const links = isWeb3 ? [
     { name: "Home", href: "/web3" },
-    { name: "About", href: "/about" },
+    { name: "About", href: "/web3-about" },
     { name: "Works", href: "/web3-works" },
     { name: "Contact", href: "https://wa.me/2347039662696" },
   ] : [

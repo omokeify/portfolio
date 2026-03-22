@@ -21,6 +21,7 @@ import About from "./pages/About";
 import ProjectDetail from "./pages/ProjectDetail";
 import Web3Portfolio from "./pages/Web3Portfolio";
 import Web3Works from "./pages/Web3Works";
+import Web3About from "./pages/Web3About";
 
 export default function App() {
   useEffect(() => {
@@ -63,6 +64,7 @@ export default function App() {
           <Route path="/project/:slug" element={<ProjectDetail />} />
           <Route path="/web3" element={<Web3Portfolio />} />
           <Route path="/web3-works" element={<Web3Works />} />
+          <Route path="/web3-about" element={<Web3About />} />
         </Routes>
         <Footer />
       </div>

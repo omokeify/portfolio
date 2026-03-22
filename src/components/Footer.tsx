@@ -62,7 +62,7 @@ export default function Footer() {
               <ul className="space-y-3 font-medium text-sm">
                 <li><MagneticButton><Link to={isWeb3 ? "/web3" : "/"} className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Home</Link></MagneticButton></li>
                 <li><MagneticButton><Link to={isWeb3 ? "/web3-works" : "/works"} className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Work</Link></MagneticButton></li>
-                <li><MagneticButton><Link to="/about" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>About</Link></MagneticButton></li>
+                <li><MagneticButton><Link to={isWeb3 ? "/web3-about" : "/about"} className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>About</Link></MagneticButton></li>
                 <li><MagneticButton><a href="https://wa.me/2347039662696" target="_blank" rel="noopener noreferrer" className={`${textNormalClass} ${hoverClass} transition-colors inline-block`}>Contact</a></MagneticButton></li>
               </ul>
             </div>
